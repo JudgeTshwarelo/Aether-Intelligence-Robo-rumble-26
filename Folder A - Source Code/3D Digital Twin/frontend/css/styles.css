@@ -1,0 +1,228 @@
+:root {
+  --bg: #05080f;
+  --panel: rgba(6, 13, 24, 0.9);
+  --panel-border: rgba(57, 255, 216, 0.45);
+  --cyan: #39ffd8;
+  --cyan-soft: rgba(57, 255, 216, 0.25);
+  --text: #dff9ff;
+  --muted: rgba(207, 246, 255, 0.6);
+  --muted-strong: rgba(207, 246, 255, 0.8);
+  --danger: #ff3b3b;
+  --amber: #ffb347;
+  --grid: rgba(57, 255, 216, 0.18);
+  --primary-shadow: rgba(57, 255, 216, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+  overflow: hidden;
+}
+
+body {
+  background: var(--bg);
+}
+
+button {
+  font: inherit;
+}
+
+.app-shell {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+}
+
+#viewport {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hud-title {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  color: rgba(57, 255, 216, 0.5);
+}
+
+.headline {
+  margin-top: 2px;
+  font-size: 1.05rem;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.summary {
+  margin-top: 4px;
+  font-size: 10px;
+  color: rgba(207, 246, 255, 0.4);
+  letter-spacing: 0.04em;
+}
+
+.control-bar {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.toggle {
+  border: 1px solid rgba(57, 255, 216, 0.3);
+  border-radius: 12px;
+  background: rgba(57, 255, 216, 0.02);
+  color: rgba(207, 246, 255, 0.7);
+  padding: 7px 12px;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.toggle.active {
+  border-color: rgba(57, 255, 216, 0.9);
+  background: rgba(57, 255, 216, 0.15);
+  color: #dff9ff;
+  box-shadow: 0 0 12px rgba(57, 255, 216, 0.25);
+}
+
+.toggle:hover {
+  background: rgba(57, 255, 216, 0.08);
+}
+
+.hint {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 10;
+  pointer-events: none;
+  color: rgba(207, 246, 255, 0.4);
+  font-size: 10px;
+  text-align: right;
+  letter-spacing: 0.12em;
+}
+
+.selection-panel {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  width: 256px;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.panel-card {
+  border-radius: 12px;
+  border: 1px solid var(--panel-border);
+  background: rgba(6, 13, 24, 0.9);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 24px rgba(57, 255, 216, 0.18);
+  padding: 16px;
+}
+
+.panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.panel-subtitle {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: rgba(57, 255, 216, 0.6);
+}
+
+.entity-id {
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.close-button {
+  border: 0;
+  background: transparent;
+  color: rgba(207, 246, 255, 0.5);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.data-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(57, 255, 216, 0.08);
+}
+
+.data-label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(207, 246, 255, 0.5);
+}
+
+.data-value {
+  font-size: 12px;
+  color: #dff9ff;
+  font-family: ui-monospace, monospace;
+}
+
+.text-cyan { color: #dff9ff; }
+.text-emerald { color: #76efb0; }
+.text-amber { color: #ffb347; }
+
+.follow-button {
+  width: 100%;
+  margin-top: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(57, 255, 216, 0.4);
+  background: rgba(57, 255, 216, 0.08);
+  color: rgba(207, 246, 255, 0.86);
+  padding: 8px 12px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+}
+
+.follow-button.following {
+  border-color: rgba(57, 255, 216, 0.9);
+  background: rgba(57, 255, 216, 0.2);
+  color: var(--text);
+}
+
+.selection-empty {
+  width: 256px;
+  border: 1px solid rgba(57, 255, 216, 0.4);
+  background: rgba(6, 13, 24, 0.9);
+  color: rgba(207, 246, 255, 0.6);
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+}

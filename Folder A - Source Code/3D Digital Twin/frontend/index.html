@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AETHER · SYNTHETIC CITY</title>
+    <meta name="description" content="AETHER / SKYNET digital twin" />
+    <link rel="stylesheet" href="/static/css/styles.css" />
+  </head>
+  <body>
+    <div id="app" class="app-shell">
+      <div id="viewport"></div>
+      <div id="hud-title" class="hud-title">
+        <div class="eyebrow">AETHER · SYNTHETIC CITY</div>
+        <div class="headline">DIGITAL TWIN</div>
+        <div id="status-summary" class="summary">0 buildings · 0 nodes · live traffic</div>
+      </div>
+
+      <div id="controls" class="control-bar">
+        <button id="toggle-holo" class="toggle active">HOLO LAYER</button>
+        <button id="toggle-pause" class="toggle">⏸ PAUSE</button>
+        <button id="toggle-speed" class="toggle">SPEED 1×</button>
+      </div>
+
+      <div class="hint">drag · orbit &nbsp;·&nbsp; scroll · zoom &nbsp;·&nbsp; click entity · inspect</div>
+      <div id="selection-panel"></div>
+    </div>
+
+    <script type="importmap">
+      {
+      "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.171.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.171.0/examples/jsm/"
+      }
+      }
+    </script>
+
+    <script type="module" src="/static/js/main.js"></script>
+  </body>
+</html>
