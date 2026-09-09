@@ -70,69 +70,69 @@ The purpose is not simply to create a visually 3D map. The Digital Twin acts as 
 ```text
 Core System Architecture
                     ┌──────────────────────────┐
-                    │    	  SMART WEARABLE      	   │
-                    │                          		   │
-                    │ 		 Emergency Button     	   │
-                    │ 	  	   GPS Location            |
-                    │ 		  Vital Telemetry          │
+                    │      SMART WEARABLE      │
+                    │                          │
+                    │ 	 Emergency Button      │
+                    │ 	  GPS Location         |
+                    │    Vital Telemetry       │
                     └────────────┬─────────────┘
-                                     │
-                                     ▼
+								 │
+                                 ▼
                     ┌──────────────────────────┐
-                    │     		NETWORK / IoT          │
-                    │      		 DATA LAYER            │
+                    │     NETWORK / IoT        │
+                    │      DATA LAYER          │
                     └────────────┬─────────────┘
-                                     │
-                                     ▼
+								 │
+								 ▼
               ┌────────────────────────────────────┐
-              │          		PLATFORM          		      │
-              │                                  		      │
-              │  Incident Processing              			  │
-              │  Resource Monitoring              		      │
-              │  AI Decision Engine              		      │
-              │  Route Analysis                  		      │
-              │  Facility Selection              	          │
+              │          	 PLATFORM          	   │
+              │                                    │
+              │  Incident Processing               │
+              │  Resource Monitoring               │
+              │  AI Decision Engine                │
+              │  Route Analysis                    │
+              │  Facility Selection                │
               └────────────────┬───────────────────┘
-                               	    │
-                                    ▼
+							   │
+							   ▼
               ┌────────────────────────────────────┐
-              │          3D DIGITAL TWIN           	          │
-              │                                   	   	 	  │
-              │  Terrain                       			      │
-              │  Roads                         			      │
-              │  Hospitals                     			      │
-              │  Vehicles                      		          │
-              │  Incidents                    		          │
-              │  Resources                    			      │
-              │  Traffic                     		          │
-              │  Robotic Assets              			      │
+              │          3D DIGITAL TWIN           │
+              │                                    │
+              │  Terrain                       	   │
+              │  Roads                         	   │
+              │  Hospitals                     	   │
+              │  Vehicles                      	   │
+              │  Incidents                    	   │
+              │  Resources                    	   │
+              │  Traffic                     	   │
+              │  Robotic Assets              	   │
               └────────────────┬───────────────────┘
-                                    │
-                                    ▼
+ 							   │
+							   ▼
               ┌────────────────────────────────────┐
-              │       		RESOURCE ALLOCATION     		  │
-              │                                		          │
-              │  		    	Nearest Resource              │
-              │  			Resource Availability        	  │
-              │  					Route                     │
-              │  				  Severity                    │
-              │  		      Facility Capacity               │
+              │       	RESOURCE ALLOCATION        │
+              │                                	   │
+              │  		  Nearest Resource         │
+              │  	   Resource Availability       │
+              │  			   Route               │
+              │  		       Severity            │
+              │  		  Facility Capacity        │
               └────────────────┬───────────────────┘
-                               	    │
-                              	    ▼
+ 							   │
+							   ▼
             ┌────────────────────────────────────────┐
-            │          		RESPONSE ASSETS           			 │
-            │                                    			     │
-            │ 		Ambulance │ Drone │ Rover │ Responder		 │
+            │          	RESPONSE ASSETS              │
+            │                                    	 │
+            │ 	Ambulance │ Drone │ Responder		 │
             └────────────────┬───────────────────────┘
-                            	  │
-                                  ▼
+							 │
+							 ▼
                  ┌─────────────────────────┐
-                 │   		 COMMAND CENTRE        │
-                 │                       		   │
-                 │ 		Real-Time Monitoring  	   │
-                 │ 		Situation Awareness   	   │
-                 │ 		Response Coordination 	   │
+                 │   	COMMAND CENTRE     │
+                 │                     	   │
+                 │ 	Real-Time Monitoring   │
+                 │ 	Situation Awareness    │
+                 │ 	Response Coordination  │
                  └─────────────────────────┘
 
 ```
