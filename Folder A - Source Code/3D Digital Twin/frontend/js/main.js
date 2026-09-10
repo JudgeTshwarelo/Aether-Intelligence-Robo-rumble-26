@@ -564,7 +564,8 @@ async function bootstrap() {
   syncUI();
   updateSummary();
 
-  const ws = new WebSocket(`ws://${window.location.host}/ws`);
+  const protocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+  const ws = new WebSocket(`${protocol}//${location.host}/ws`);
   ws.onmessage = (event) => {
     const message = JSON.parse(event.data);
     if (message.type === 'connected') return;
