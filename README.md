@@ -295,16 +295,6 @@ AETHER-INTELLIGENCE-ROBO-RUMBLE-26
 │   │       └── Design / system simulations
 │   │
 │   │
-│   └── Other
-│       │
-│       ├── Digital twin Picture.png
-│       ├── Watch.png
-│       ├── ChatGPT Image Sep 2, 2026, 12_15_25 PM.png
-│       ├── ChatGPT Image Sep 2, 2026, 12_15_44 PM.png
-│       ├── ChatGPT Image Sep 2, 2026, 12_15_51 PM.png
-│       ├── ChatGPT Image Sep 2, 2026, 12_15_55 PM.png
-│       └── ChatGPT Image Sep 2, 2026, 12_16_06 PM.png
-│           └── Concept / visualization assets
 │
 │
 └── FOLDER C — DOCUMENTATION
