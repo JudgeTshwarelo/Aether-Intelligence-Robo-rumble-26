@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AETHER INTELLIGENCE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" type="image/png" href="/static/images/AI-logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ================= LANDING PAGE ONLY STYLES ================= */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      width: 100%;
+      min-height: 100vh;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #eef1f5;
+      color: #101828;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ----- PRELOADER ----- */
+    #preloader {
+      position: fixed;
+      inset: 0;
+      background: #0a1628;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+      pointer-events: none;
+    }
+    #preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+    .preloader-content { text-align: center; animation: pulse 2s infinite ease-in-out; }
+
+    .preloader-text {
+      color: #ffffff;
+      font-size: clamp(18px, 3vw, 28px);
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: 0 0 20px rgba(77, 155, 240, 0.5);
+      margin-bottom: 24px;
+    }
+
+    .preloader-dots { display: flex; justify-content: center; gap: 8px; }
+    .preloader-dots span {
+      width: 12px; height: 12px; background: #2f7dd8; border-radius: 50%;
+      display: inline-block; animation: dotBounce 1.4s infinite ease-in-out both;
+    }
+    .preloader-dots span:nth-child(1) { animation-delay: -0.32s; }
+    .preloader-dots span:nth-child(2) { animation-delay: -0.16s; }
+    .preloader-dots span:nth-child(3) { animation-delay: 0s; }
+
+    @keyframes dotBounce {
+      0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+      40% { transform: scale(1.2); opacity: 1; }
+    }
+    @keyframes pulse {
+      0% { opacity: 0.9; transform: scale(0.98); }
+      50% { opacity: 1; transform: scale(1.01); }
+      100% { opacity: 0.9; transform: scale(0.98); }
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ----- NAVBAR ----- */
+    .nav {
+      background: #0a1628;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: clamp(12px, 1.5vw, 20px) clamp(18px, 3vw, 48px);
+      width: 100%;
+    }
+    .brand { display: flex; align-items: center; gap: clamp(8px, 1vw, 14px); }
+    .brand-icon {
+      width: clamp(32px, 4vw, 44px); height: clamp(32px, 4vw, 44px);
+      background: linear-gradient(135deg, #2f7dd8, #1a4d8f);
+      border-radius: 9px; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; overflow: hidden;
+    }
+    .brand-icon img { width: 100%; height: 100%; object-fit: contain; }
+    .brand-text .title {
+      color: #fff; font-weight: 800;
+      font-size: clamp(14px, 1.5vw, 20px);
+      letter-spacing: 0.5px; line-height: 1.1;
+    }
+
+    /* ----- HERO ----- */
+    .hero {
+      position: relative;
+      min-height: clamp(420px, 65vh, 620px);
+      display: flex; align-items: center; overflow: hidden;
+      background: #0c1a2e; width: 100%;
+    }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; }
+    .hero-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-scrim {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(100deg, rgba(6,14,26,0.88) 0%, rgba(8,18,32,0.68) 38%, rgba(10,22,38,0.35) 65%, rgba(10,22,38,0.55) 100%);
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      width: 100%; max-width: 1600px; margin: 0 auto;
+      padding: clamp(32px, 5vw, 72px) clamp(18px, 4vw, 56px);
+      display: flex; align-items: center; justify-content: space-between;
+      gap: clamp(24px, 4vw, 60px); flex-wrap: wrap;
+    }
+    .hero-copy { max-width: min(660px, 55%); flex: 1 1 360px; }
+    .hero-copy h1 {
+      color: #fff; font-size: clamp(28px, 4.5vw, 54px);
+      font-weight: 800; line-height: 1.12; letter-spacing: -0.5px;
+      margin-bottom: clamp(14px, 1.8vw, 24px);
+      text-shadow: 0 2px 20px rgba(0,0,0,0.25);
+    }
+    .hero-copy p {
+      color: #d5dce6; font-size: clamp(14px, 1.2vw, 17px);
+      line-height: 1.6; max-width: 520px;
+      margin-bottom: clamp(24px, 3vw, 38px);
+    }
+    .hero-actions { display: flex; gap: clamp(10px, 1vw, 16px); flex-wrap: wrap; }
+
+    .btn {
+      padding: clamp(10px, 1.2vw, 15px) clamp(20px, 2.2vw, 32px);
+      border-radius: 8px; font-size: clamp(13px, 1vw, 15px);
+      font-weight: 600; cursor: pointer;
+      border: 1.5px solid transparent;
+      transition: transform 0.15s, background 0.15s;
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: #2f7dd8; color: #fff; }
+    .btn-primary:hover { background: #1f6bc4; }
+    .btn-outline {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.35); color: #fff;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.12); }
+
+    .status-card {
+      background: rgba(15,28,48,0.72);
+      border: 1px solid rgba(255,255,255,0.09);
+      backdrop-filter: blur(10px);
+      border-radius: 14px;
+      padding: clamp(18px, 2vw, 26px) clamp(18px, 2vw, 30px);
+      width: min(320px, 100%); flex: 0 1 320px;
+      box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+    }
+    .status-card h3 {
+      color: #fff; font-size: clamp(14px, 1.1vw, 17px);
+      font-weight: 700; margin-bottom: clamp(12px, 1.2vw, 18px);
+    }
+    .status-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: clamp(7px, 0.8vw, 11px) 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: clamp(12px, 0.95vw, 14.5px);
+    }
+    .status-row:last-child { border-bottom: none; }
+    .status-left {
+      display: flex; align-items: center;
+      gap: clamp(6px, 0.7vw, 10px); color: #c3cddb;
+    }
+    .status-left svg {
+      color: #22c55e; flex-shrink: 0;
+      width: clamp(13px, 1vw, 16px); height: clamp(13px, 1vw, 16px);
+    }
+    .status-value {
+      color: red; font-weight: 600;
+      font-size: clamp(11px, 0.9vw, 14px);
+    }
+
+    /* ----- SECTION & CARDS ----- */
+    .section { max-width: 1600px; margin: 0 auto; padding: 0 clamp(18px, 4vw, 56px); width: 100%; }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: clamp(16px, 1.8vw, 26px);
+      margin-top: clamp(-80px, -6vw, -40px);
+      position: relative; z-index: 3;
+    }
+    .feature-card {
+      background: #ffffff; border-radius: 14px;
+      padding: clamp(20px, 2vw, 30px) clamp(18px, 1.8vw, 28px);
+      box-shadow: 0 8px 24px rgba(16,24,40,0.06);
+      border: 1px solid #e6e9ee;
+      transition: transform 0.18s, box-shadow 0.18s;
+      height: 100%;
+    }
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 32px rgba(16,24,40,0.1);
+    }
+    .feature-icon {
+      width: clamp(38px, 4vw, 50px); height: clamp(38px, 4vw, 50px);
+      border-radius: 11px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: clamp(12px, 1.2vw, 18px);
+    }
+    .feature-icon svg {
+      width: clamp(18px, 1.6vw, 24px); height: clamp(18px, 1.6vw, 24px);
+    }
+    .icon-blue { background: #e8f1fc; color: #2f7dd8; }
+    .icon-green { background: #e6f9ee; color: #22c55e; }
+    .icon-purple { background: #f2ecfe; color: #8b5cf6; }
+    .icon-orange { background: #fef2e3; color: #f5a524; }
+
+    .feature-card h4 {
+      font-size: clamp(15px, 1.2vw, 18px); font-weight: 700;
+      color: #101828; margin-bottom: clamp(6px, 0.6vw, 10px);
+    }
+    .feature-card p {
+      font-size: clamp(12px, 0.95vw, 14.5px);
+      color: #667085; line-height: 1.55;
+      margin-bottom: clamp(12px, 1.2vw, 18px);
+    }
+    .feature-link {
+      color: #2f7dd8;
+      font-size: clamp(12px, 0.95vw, 14.5px);
+      font-weight: 600;
+      display: inline-flex; align-items: center; gap: 5px;
+    }
+    .feature-link svg {
+      transition: transform 0.15s;
+      width: clamp(12px, 1vw, 15px); height: clamp(12px, 1vw, 15px);
+    }
+    .feature-card:hover .feature-link svg { transform: translateX(3px); }
+
+    /* ----- MAP VIEW (iframe container) ----- */
+    #map-view {
+      position: fixed; inset: 0;
+      background: #000; z-index: 9998;
+      display: none;
+    }
+    #map-view.active { display: block; }
+    #map-iframe {
+      width: 100%; height: 100%; border: none; display: block;
+      background: #05080f;
+    }
+
+    /* ----- OVERLAYS ----- */
+    .map-overlay {
+      position: fixed; top: 0; bottom: 0;
+      width: 25%; background: #000;
+      z-index: 9999;
+      display: flex; align-items: center; justify-content: center;
+      transform: translateX(-100%);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+    }
+    .map-overlay.open { transform: translateX(0); pointer-events: auto; }
+    .map-overlay.left { left: 0; }
+    .map-overlay.right { right: 0; transform: translateX(100%); }
+    .map-overlay.right.open { transform: translateX(0); }
+
+    .overlay-content {
+      color: #fff;
+      font-size: clamp(18px, 2vw, 32px);
+      font-weight: 800; letter-spacing: 3px;
+      text-align: center; padding: 20px;
+    }
+    .overlay-content .sub {
+      display: block;
+      font-size: clamp(10px, 0.9vw, 13px);
+      font-weight: 400; letter-spacing: 2px;
+      color: #6b7a8f; margin-top: 12px;
+    }
+
+    /* ----- EDGE BUTTONS ----- */
+    .map-edge-btn {
+      position: fixed; top: 50%;
+      transform: translateY(-50%);
+      width: 48px; height: 96px;
+      background: rgba(10,22,40,0.85);
+      border: none; cursor: pointer;
+      z-index: 10000;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; transition: background 0.2s;
+      padding: 0;
+    }
+    .map-edge-btn:hover { background: rgba(47,125,216,0.9); }
+    .map-edge-btn.left { left: 0; border-radius: 0 8px 8px 0; }
+    .map-edge-btn.right { right: 0; border-radius: 8px 0 0 8px; }
+    .map-edge-btn svg { width: 20px; height: 20px; }
+
+    /* ----- CLOSE BUTTON ----- */
+    .map-close-btn {
+      position: fixed; top: 20px; right: 20px;
+      width: 44px; height: 44px;
+      background: rgba(10,22,40,0.9);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px; color: #fff; cursor: pointer;
+      z-index: 10001;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .map-close-btn:hover { background: #d92b2b; border-color: #d92b2b; }
+    .map-close-btn svg { width: 18px; height: 18px; }
+
+    /* ----- RESPONSIVE ----- */
+    @media (max-width: 1100px) {
+      .hero-inner { flex-direction: column; align-items: flex-start; }
+      .hero-copy { max-width: 100%; flex: 1 1 auto; }
+      .status-card { width: 100%; flex: 1 1 auto; }
+      .feature-grid { margin-top: 32px; }
+    }
+    @media (max-width: 700px) {
+      .nav { padding: 12px 16px; }
+      .hero-inner { padding: 32px 16px; }
+      .section { padding: 0 16px; }
+      .hero-actions { flex-direction: column; width: 100%; }
+      .btn { width: 100%; text-align: center; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .preloader-text { font-size: 20px; }
+      .map-overlay { width: 80%; }
+      .map-edge-btn { width: 36px; height: 72px; }
+    }
+    @media (min-width: 1920px) {
+      .hero-inner { padding: 80px 72px; }
+      .section { padding: 0 72px; }
+      .feature-grid { gap: 32px; margin-top: -60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PRELOADER -->
+  <div id="preloader">
+    <div class="preloader-content">
+      <div class="preloader-text">Initializing Aether Intelligence</div>
+      <div class="preloader-dots">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- LANDING -->
+  <div id="landing-page">
+    <header class="nav">
+      <div class="brand">
+        <div class="brand-icon">
+          <img src="/static/images/AI-logo.png" alt="Aether Intelligence logo" />
+        </div>
+        <div class="brand-text">
+          <div class="title">AETHER INTELLIGENCE</div>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-bg">
+        <img src="/static/images/bg.png" alt="infrastructure background" />
+      </div>
+      <div class="hero-scrim"></div>
+
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <h1>Intelligent Infrastructure.<br />Smarter Decisions.</h1>
+          <p>SKYNET uses AI, drones and GIS technology to monitor, analyze and predict infrastructure conditions in real-time.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" id="btn-home">HOME</button>
+            <button class="btn btn-outline" id="btn-map">MAP</button>
+          </div>
+        </div>
+
+        <div class="status-card">
+          <h3>System Status</h3>
+          <div class="status-row">
+            <div class="status-left">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+              Drones Online
+            </div>
+            <span class="status-value">0 / 8</span>
+          </div>
+          <div class="status-row">
+            <div class="status-left">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+              AI Models
+            </div>
+            <span class="status-value">Offline</span>
+          </div>
+          <div class="status-row">
+            <div class="status-left">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+              Data Sync
+            </div>
+            <span class="status-value">Offline</span>
+          </div>
+          <div class="status-row">
+            <div class="status-left">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+              Cloud Storage
+            </div>
+            <span class="status-value">Damaged</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section">
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon icon-blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="18" r="2.2"/><path d="M8 7.5L11 11M16 7.5L13 11M8 16.5L11 13M16 16.5L13 13"/><circle cx="12" cy="12" r="2"/></svg>
+          </div>
+          <h4>Drone Operations</h4>
+          <p>Automated aerial data capture and monitoring.</p>
+          <a href="#" class="feature-link">View Drones <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon icon-green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5l8-3z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <h4>AI Analysis</h4>
+          <p>AI-powered defect detection and condition assessment.</p>
+          <a href="#" class="feature-link">View Analysis <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon icon-purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg>
+          </div>
+          <h4>GIS Mapping</h4>
+          <p>Geospatial visualization and infrastructure mapping.</p>
+          <a href="#" class="feature-link">View Maps <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon icon-orange">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9l-6-6z"/><path d="M14 3v6h6M9 13h6M9 17h6"/></svg>
+          </div>
+          <h4>Reports</h4>
+          <p>Generate inspection reports and analytics.</p>
+          <a href="#" class="feature-link">View Reports <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAP VIEW -->
+  <div id="map-view">
+    <!-- IMPORTANT: real URL, not a blob -->
+    <iframe id="map-iframe" data-src="/static/map.html" title="AETHER Digital Twin"></iframe>
+
+    <div id="overlay-left" class="map-overlay left">
+      <div class="overlay-content">
+        LIVE FOOTAGE
+        <span class="sub">REAL-TIME FEED</span>
+      </div>
+    </div>
+
+    <div id="overlay-right" class="map-overlay right">
+      <div class="overlay-content">
+        EMERGENCIES
+        <span class="sub">ACTIVE INCIDENTS</span>
+      </div>
+    </div>
+
+    <button id="btn-overlay-left" class="map-edge-btn left" aria-label="Open Live Footage">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 6l-6 6 6 6"/></svg>
+    </button>
+    <button id="btn-overlay-right" class="map-edge-btn right" aria-label="Open Emergencies">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+
+    <button id="btn-map-close" class="map-close-btn" aria-label="Close map">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M18 6l-12 12"/></svg>
+    </button>
+  </div>
+
+  <script>
+    /* ===== PRELOADER ===== */
+    const PRELOADER_CONFIG = {
+      displayDuration: 7000,
+      speechDelay: 100,
+      speechRate: 0.8,
+      speechPitch: 0.01,
+      speechVolume: 1.0,
+      speechText: 'Aether Intelligence, , Powering Smarter Decisions.'
+    };
+
+    (function () {
+      document.body.style.overflow = 'hidden';
+
+      function speakInitialization() {
+        if (!('speechSynthesis' in window)) return;
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(PRELOADER_CONFIG.speechText);
+        u.rate   = PRELOADER_CONFIG.speechRate;
+        u.pitch  = PRELOADER_CONFIG.speechPitch;
+        u.volume = PRELOADER_CONFIG.speechVolume;
+        const voices = window.speechSynthesis.getVoices();
+        if (voices.length) {
+          const preferred =
+            voices.find(v => v.lang.includes('en') && v.name.includes('Google')) ||
+            voices.find(v => v.lang.includes('en'));
+          if (preferred) u.voice = preferred;
+        }
+        window.speechSynthesis.speak(u);
+      }
+
+      function hidePreloader() {
+        const p = document.getElementById('preloader');
+        if (!p) return;
+        p.classList.add('hidden');
+        document.body.classList.add('loaded');
+        document.body.style.overflow = 'auto';
+      }
+
+      function runPreloaderSequence() {
+        setTimeout(speakInitialization, PRELOADER_CONFIG.speechDelay);
+        setTimeout(hidePreloader, PRELOADER_CONFIG.displayDuration);
+      }
+
+      if (document.readyState === 'complete') runPreloaderSequence();
+      else window.addEventListener('load', runPreloaderSequence);
+
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.onvoiceschanged = function () {};
+      }
+    })();
+
+    /* ===== MAP VIEW TOGGLE ===== */
+    (function () {
+      const btnMap    = document.getElementById('btn-map');
+      const btnHome   = document.getElementById('btn-home');
+      const btnClose  = document.getElementById('btn-map-close');
+      const mapView   = document.getElementById('map-view');
+      const mapIframe = document.getElementById('map-iframe');
+      const overlayLeft  = document.getElementById('overlay-left');
+      const overlayRight = document.getElementById('overlay-right');
+      const btnLeft      = document.getElementById('btn-overlay-left');
+      const btnRight     = document.getElementById('btn-overlay-right');
+
+      let mapLoaded = false;
+
+      function openMap() {
+        // Lazy load the real URL the first time only.
+        if (!mapLoaded) {
+          mapIframe.src = mapIframe.dataset.src;   // "/static/map.html"
+          mapLoaded = true;
+        }
+        mapView.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMap() {
+        mapView.classList.remove('active');
+        overlayLeft.classList.remove('open');
+        overlayRight.classList.remove('open');
+        document.body.style.overflow = 'auto';
+      }
+
+      btnMap.addEventListener('click', openMap);
+      btnHome.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      btnClose.addEventListener('click', closeMap);
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mapView.classList.contains('active')) closeMap();
+      });
+
+      btnLeft.addEventListener('click', () => {
+        overlayLeft.classList.toggle('open');
+        overlayRight.classList.remove('open');
+      });
+      btnRight.addEventListener('click', () => {
+        overlayRight.classList.toggle('open');
+        overlayLeft.classList.remove('open');
+      });
+    })();
+  </script>
+</body>
+</html>

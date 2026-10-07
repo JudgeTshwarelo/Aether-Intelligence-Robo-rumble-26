@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AETHER · DIGITAL TWIN HUB</title>
+    <link rel="stylesheet" href="/static/css/styles.css" />
+
+    <style>
+      /* ===== TOP NAV ===== */
+      #topnav {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        height: 52px;
+        background: rgba(5, 10, 16, 0.95);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(57, 255, 216, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 22px;
+        z-index: 10000;
+        font-family: ui-monospace, monospace;
+      }
+      #topnav .brand {
+        display: flex; align-items: center; gap: 10px;
+        color: #dff9ff; font-weight: 800; letter-spacing: 2px;
+        font-size: 12px; text-transform: uppercase;
+      }
+      #topnav .brand .dot {
+        width: 8px; height: 8px;
+        background: #39ffd8; border-radius: 50%;
+        box-shadow: 0 0 12px #39ffd8;
+        animation: navpulse 2s infinite;
+      }
+      @keyframes navpulse { 50% { opacity: 0.4; } }
+
+      #topnav .tabs { display: flex; gap: 8px; }
+      .tab-btn {
+        background: transparent;
+        border: 1px solid rgba(57, 255, 216, 0.25);
+        color: #a0f0e0;
+        padding: 7px 15px;
+        border-radius: 30px;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-family: inherit;
+        text-transform: uppercase;
+      }
+      .tab-btn:hover {
+        background: rgba(57, 255, 216, 0.1);
+        border-color: rgba(57, 255, 216, 0.5);
+        color: #39ffd8;
+      }
+      .tab-btn.active {
+        background: rgba(57, 255, 216, 0.2);
+        border-color: #39ffd8;
+        color: #39ffd8;
+        box-shadow: 0 0 18px rgba(57, 255, 216, 0.3);
+      }
+      #topnav .status {
+        color: #7ffbe6; font-size: 10px;
+        letter-spacing: 2px; opacity: 0.7;
+        text-transform: uppercase;
+      }
+
+      /* Push the twin shell under the navbar */
+      .app-shell {
+        position: fixed !important;
+        inset: 52px 0 0 0 !important;
+        top: 52px !important;
+        height: calc(100vh - 52px) !important;
+      }
+
+      /* View containers */
+      .view {
+        position: fixed;
+        top: 52px; left: 0; right: 0; bottom: 0;
+        display: none;
+        overflow: hidden;
+        background: #05080f;
+      }
+      .view.active { display: block; }
+
+      /* ============================================================
+         CAMERA VIEW — native HUD, no nested iframes
+         ============================================================ */
+      #view-camera {
+        background: #05080f;
+        padding: 24px;
+        display: none;
+        grid-template-columns: 1fr 300px;
+        gap: 24px;
+        overflow: auto;
+      }
+      #view-camera.active { display: grid; }
+
+      /* Main video panel */
+      .cam-video-panel {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        min-height: 0;
+      }
+
+      .cam-video-wrap {
+        position: relative;
+        flex: 1;
+        background: radial-gradient(circle at 50% 40%, #0c1a2e, #02060c 70%);
+        border-radius: 14px;
+        border: 1px solid rgba(57, 255, 216, 0.25);
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.6),
+                    inset 0 0 60px rgba(57, 255, 216, 0.05);
+        overflow: hidden;
+        min-height: 320px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .cam-video-wrap::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: repeating-linear-gradient(
+          to bottom,
+          rgba(57, 255, 216, 0.03) 0px,
+          rgba(57, 255, 216, 0.03) 1px,
+          transparent 1px,
+          transparent 3px
+        );
+        z-index: 3;
+      }
+
+      #cam-stream {
+        max-width: 100%;
+        max-height: 100%;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+        background: #000;
+      }
+
+      #cam-offline {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        background: rgba(5, 10, 16, 0.95);
+        z-index: 4;
+      }
+      #cam-offline.hidden { display: none; }
+      #cam-offline h2 {
+        color: #ff5566; font-size: 18px;
+        letter-spacing: 3px; font-weight: 700;
+        text-transform: uppercase;
+      }
+      #cam-offline p {
+        color: #7f94a6; font-size: 12px;
+        letter-spacing: 1px; text-align: center;
+        max-width: 400px; line-height: 1.6;
+      }
+      #cam-offline code {
+        background: rgba(57, 255, 216, 0.1);
+        color: #39ffd8; padding: 3px 8px; border-radius: 4px;
+      }
+
+      /* Video HUD overlays (top-left status, top-right time) */
+      .cam-hud-tl, .cam-hud-tr, .cam-hud-bl {
+        position: absolute;
+        z-index: 5;
+        font-family: ui-monospace, monospace;
+        font-size: 11px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 6px 12px;
+        border-radius: 6px;
+        background: rgba(5, 10, 16, 0.8);
+        backdrop-filter: blur(6px);
+        border: 1px solid rgba(57, 255, 216, 0.3);
+        color: #a0f0e0;
+        pointer-events: none;
+      }
+      .cam-hud-tl { top: 12px; left: 12px; display: flex; align-items: center; gap: 8px; }
+      .cam-hud-tr { top: 12px; right: 12px; font-variant-numeric: tabular-nums; }
+      .cam-hud-bl { bottom: 12px; left: 12px; }
+
+      .hud-dot {
+        width: 7px; height: 7px; border-radius: 50%;
+        background: #ff3344; box-shadow: 0 0 8px #ff3344;
+        animation: recpulse 1.2s infinite;
+      }
+      .hud-dot.online { background: #00ff88; box-shadow: 0 0 8px #00ff88; }
+      @keyframes recpulse { 50% { opacity: 0.3; } }
+
+      /* Bottom control strip */
+      .cam-controls {
+        display: flex;
+        gap: 10px;
+        padding: 14px 16px;
+        border-radius: 12px;
+        border: 1px solid rgba(57, 255, 216, 0.2);
+        background: rgba(6, 13, 24, 0.85);
+        backdrop-filter: blur(10px);
+        flex-wrap: wrap;
+      }
+
+      .cam-btn {
+        background: transparent;
+        border: 1px solid rgba(57, 255, 216, 0.3);
+        color: #a0f0e0;
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 1.2px;
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: all 0.2s;
+        font-family: ui-monospace, monospace;
+      }
+      .cam-btn:hover {
+        background: rgba(57, 255, 216, 0.1);
+        border-color: #39ffd8;
+        color: #39ffd8;
+      }
+      .cam-btn.primary {
+        background: rgba(57, 255, 216, 0.15);
+        border-color: #39ffd8;
+        color: #39ffd8;
+      }
+      .cam-btn.danger {
+        border-color: rgba(255, 90, 90, 0.5);
+        color: #ff6674;
+      }
+      .cam-btn.danger:hover {
+        background: rgba(255, 90, 90, 0.15);
+        border-color: #ff3344;
+        color: #ff3344;
+      }
+
+      /* Right-side settings sidebar */
+      .cam-settings {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        overflow-y: auto;
+        padding-right: 4px;
+      }
+
+      .cam-panel {
+        background: rgba(6, 13, 24, 0.85);
+        border: 1px solid rgba(57, 255, 216, 0.2);
+        border-radius: 12px;
+        padding: 16px;
+        backdrop-filter: blur(10px);
+      }
+
+      .cam-panel h3 {
+        font-size: 10px;
+        letter-spacing: 2.5px;
+        color: #39ffd8;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid rgba(57, 255, 216, 0.15);
+        font-weight: 700;
+      }
+
+      .cam-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(57, 255, 216, 0.08);
+        font-family: ui-monospace, monospace;
+        font-size: 11px;
+      }
+      .cam-row:last-child { border-bottom: none; }
+
+      .cam-row label {
+        color: #7f94a6;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        font-size: 10px;
+      }
+
+      .cam-row select,
+      .cam-row input[type="range"] {
+        background: rgba(5, 10, 16, 0.8);
+        border: 1px solid rgba(57, 255, 216, 0.25);
+        color: #dff9ff;
+        padding: 4px 8px;
+        border-radius: 5px;
+        font-family: ui-monospace, monospace;
+        font-size: 11px;
+        min-width: 100px;
+        outline: none;
+      }
+
+      .cam-row select:focus {
+        border-color: #39ffd8;
+        box-shadow: 0 0 8px rgba(57, 255, 216, 0.3);
+      }
+
+      .cam-row input[type="range"] {
+        padding: 0;
+        min-width: 120px;
+        accent-color: #39ffd8;
+      }
+
+      .cam-row .val {
+        color: #39ffd8;
+        font-weight: 700;
+        min-width: 40px;
+        text-align: right;
+      }
+
+      /* Responsive: single column on small screens */
+      @media (max-width: 900px) {
+        #view-camera.active {
+          grid-template-columns: 1fr;
+          grid-template-rows: 1fr auto;
+        }
+        .cam-settings {
+          max-height: 40vh;
+        }
+      }
+
+      @media (max-width: 700px) {
+        #topnav { padding: 0 12px; height: 48px; }
+        .tab-btn { padding: 6px 10px; font-size: 9px; }
+        .app-shell, .view { top: 48px !important; inset: 48px 0 0 0 !important; }
+        #view-camera { padding: 12px; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- ============ TOP NAV ============ -->
+    <div id="topnav">
+      <div class="brand">
+        <div class="dot"></div>
+        AETHER HUB
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-view="twin">◈ DIGITAL TWIN</button>
+        <button class="tab-btn" data-view="camera">▣ CAMERA</button>
+      </div>
+
+      <div class="status" id="statusText">SYSTEM ONLINE</div>
+    </div>
+
+    <!-- ============ VIEW 1: DIGITAL TWIN ============ -->
+    <div class="view active" id="view-twin">
+      <div id="app" class="app-shell">
+        <div id="viewport"></div>
+
+        <div id="hud-title" class="hud-title">
+          <div class="eyebrow">AETHER · SYNTHETIC CITY</div>
+          <div class="headline">DIGITAL TWIN</div>
+          <div id="status-summary" class="summary">0 buildings · 0 nodes · live traffic</div>
+        </div>
+
+        <div id="controls" class="control-bar">
+          <button id="toggle-view" class="toggle active">WORLD VIEW</button>
+          <button id="toggle-holo" class="toggle active">HOLO LAYER</button>
+          <button id="toggle-pause" class="toggle">⏸ PAUSE</button>
+          <button id="toggle-speed" class="toggle">SPEED 1×</button>
+        </div>
+
+        <div id="stats-bar" class="stats-bar">
+          <div class="stat"><span class="stat-label">SIM TIME</span><span id="stat-time" class="stat-value">00:00.0</span></div>
+          <div class="stat-sep"></div>
+          <div class="stat"><span class="stat-label">VEHICLES</span><span id="stat-vehicles" class="stat-value">0</span></div>
+          <div class="stat-sep"></div>
+          <div class="stat"><span class="stat-label">MOVING</span><span id="stat-moving" class="stat-value text-emerald">0</span></div>
+          <div class="stat-sep"></div>
+          <div class="stat"><span class="stat-label">STOPPED</span><span id="stat-stopped" class="stat-value text-amber">0</span></div>
+          <div class="stat-sep"></div>
+          <div class="stat"><span class="stat-label">FPS</span><span id="stat-fps" class="stat-value">--</span></div>
+        </div>
+
+        <div id="legend" class="legend">
+          <div class="legend-title">LEGEND</div>
+          <div class="legend-row"><span class="legend-dot" style="background:#ff3b3b;box-shadow:0 0 8px #ff3b3b"></span>HOSPITAL</div>
+          <div class="legend-row"><span class="legend-dot" style="background:#3b7aff;box-shadow:0 0 8px #3b7aff"></span>POLICE</div>
+          <div class="legend-row"><span class="legend-dot" style="background:#ff6a3b;box-shadow:0 0 8px #ff6a3b"></span>FIRE</div>
+          <div class="legend-row"><span class="legend-dot" style="background:#39ffd8;box-shadow:0 0 8px #39ffd8"></span>ENERGY</div>
+          <div class="legend-row"><span class="legend-dot" style="background:#7ffbe6;box-shadow:0 0 8px #7ffbe6"></span>VEHICLE</div>
+          <div class="legend-row"><span class="legend-dot" style="background:#ffb347;box-shadow:0 0 8px #ffb347"></span>SIGNAL</div>
+        </div>
+
+        <div id="minimap-wrap" class="minimap-wrap">
+          <div class="minimap-header">
+            <span class="minimap-title">SECTOR MAP</span>
+            <span id="minimap-zoom" class="minimap-zoom">1×</span>
+          </div>
+          <canvas id="minimap" width="220" height="220"></canvas>
+          <div class="minimap-footer"><span id="minimap-coords">X 0 · Z 0</span></div>
+        </div>
+
+        <div id="orbit-hint" class="hint">drag · orbit &nbsp;·&nbsp; scroll · zoom &nbsp;·&nbsp; click entity · inspect</div>
+        <div id="fpv-hint" class="hint fpv-hint" hidden>WASD · MOVE · DRAG · LOOK · ESC · EXIT</div>
+
+        <div id="city-labels"></div>
+        <div id="selection-panel" hidden></div>
+      </div>
+    </div>
+
+    <!-- ============ VIEW 2: CAMERA (native HUD) ============ -->
+    <div class="view" id="view-camera">
+
+      <!-- Main video panel -->
+      <div class="cam-video-panel">
+        <div class="cam-video-wrap">
+
+          <!-- HUD overlays -->
+          <div class="cam-hud-tl">
+            <span class="hud-dot" id="hudDot"></span>
+            <span id="hudStatus">STANDBY</span>
+          </div>
+          <div class="cam-hud-tr" id="hudClock">--:--:--</div>
+          <div class="cam-hud-bl" id="hudRes">UXGA · Q12</div>
+
+          <!-- Live MJPEG stream -->
+          <img id="cam-stream" alt="Live camera feed" />
+
+          <!-- Offline overlay -->
+          <div id="cam-offline" class="hidden">
+            <h2>⚠ CAMERA OFFLINE</h2>
+            <p>
+              Could not reach the ESP32 camera.<br />
+              Check that the device is powered on and reachable at
+              <code id="cam-ip-display">—</code>
+            </p>
+            <p style="color:#39ffd8; font-size:11px;">Retrying automatically…</p>
+          </div>
+        </div>
+
+        <!-- Control strip -->
+        <div class="cam-controls">
+          <button class="cam-btn primary" id="cam-start">◉ START STREAM</button>
+          <button class="cam-btn danger" id="cam-stop">■ STOP</button>
+          <button class="cam-btn" id="cam-snapshot">⬇ SNAPSHOT</button>
+          <button class="cam-btn" id="cam-fullscreen">⛶ FULLSCREEN</button>
+        </div>
+      </div>
+
+      <!-- Settings sidebar -->
+      <div class="cam-settings">
+
+        <div class="cam-panel">
+          <h3>Connection</h3>
+          <div class="cam-row">
+            <label>ESP32 IP</label>
+            <input
+              id="cam-ip"
+              type="text"
+              value="192.168.137.182"
+              style="min-width:140px; background:rgba(5,10,16,0.8); border:1px solid rgba(57,255,216,0.25); color:#dff9ff; padding:4px 8px; border-radius:5px; font-family:ui-monospace,monospace; font-size:11px;"
+            />
+          </div>
+          <div class="cam-row">
+            <label>Status</label>
+            <span class="val" id="cam-status-label">OFFLINE</span>
+          </div>
+          <div class="cam-row">
+            <label>Frame rate</label>
+            <span class="val" id="cam-fps">--</span>
+          </div>
+        </div>
+
+        <div class="cam-panel">
+          <h3>Resolution</h3>
+          <div class="cam-row">
+            <label>Frame size</label>
+            <select id="cam-framesize">
+              <option value="5">QVGA (320×240)</option>
+              <option value="8">VGA (640×480)</option>
+              <option value="9">SVGA (800×600)</option>
+              <option value="10">XGA (1024×768)</option>
+              <option value="13">UXGA (1600×1200)</option>
+            </select>
+          </div>
+          <div class="cam-row">
+            <label>Quality</label>
+            <input id="cam-quality" type="range" min="4" max="40" value="12" />
+            <span class="val" id="cam-quality-val">12</span>
+          </div>
+        </div>
+
+        <div class="cam-panel">
+          <h3>Image</h3>
+          <div class="cam-row">
+            <label>Brightness</label>
+            <input id="cam-brightness" type="range" min="-2" max="2" step="1" value="0" />
+            <span class="val" id="cam-brightness-val">0</span>
+          </div>
+          <div class="cam-row">
+            <label>Contrast</label>
+            <input id="cam-contrast" type="range" min="-2" max="2" step="1" value="0" />
+            <span class="val" id="cam-contrast-val">0</span>
+          </div>
+          <div class="cam-row">
+            <label>Saturation</label>
+            <input id="cam-saturation" type="range" min="-2" max="2" step="1" value="0" />
+            <span class="val" id="cam-saturation-val">0</span>
+          </div>
+          <div class="cam-row">
+            <label>V-Flip</label>
+            <select id="cam-vflip">
+              <option value="0">Off</option>
+              <option value="1">On</option>
+            </select>
+          </div>
+          <div class="cam-row">
+            <label>H-Mirror</label>
+            <select id="cam-hmirror">
+              <option value="0">Off</option>
+              <option value="1">On</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Three.js importmap + engine -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.171.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.171.0/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module" src="/static/js/main.js"></script>
+
+    <!-- Hub tab switching + camera logic -->
+    <script>
+      (function () {
+        // ============ TAB SWITCHING ============
+        const tabs = document.querySelectorAll('.tab-btn');
+        const views = {
+          twin:   document.getElementById('view-twin'),
+          camera: document.getElementById('view-camera'),
+        };
+        const statusText = document.getElementById('statusText');
+
+        function switchView(name) {
+          tabs.forEach(t => t.classList.toggle('active', t.dataset.view === name));
+          Object.keys(views).forEach(k => views[k].classList.toggle('active', k === name));
+
+          if (name === 'camera') {
+            statusText.textContent = 'CAMERA · LIVE';
+          } else {
+            statusText.textContent = 'SYSTEM ONLINE';
+            window.dispatchEvent(new Event('resize'));
+          }
+        }
+
+        tabs.forEach(tab => {
+          tab.addEventListener('click', () => switchView(tab.dataset.view));
+        });
+
+        // ============ CAMERA LOGIC ============
+        const ipInput       = document.getElementById('cam-ip');
+        const streamImg     = document.getElementById('cam-stream');
+        const offlineBox    = document.getElementById('cam-offline');
+        const ipDisplay     = document.getElementById('cam-ip-display');
+        const hudDot        = document.getElementById('hudDot');
+        const hudStatus     = document.getElementById('hudStatus');
+        const hudClock      = document.getElementById('hudClock');
+        const hudRes        = document.getElementById('hudRes');
+        const statusLabel   = document.getElementById('cam-status-label');
+        const fpsLabel      = document.getElementById('cam-fps');
+
+        const startBtn      = document.getElementById('cam-start');
+        const stopBtn       = document.getElementById('cam-stop');
+        const snapshotBtn   = document.getElementById('cam-snapshot');
+        const fullscreenBtn = document.getElementById('cam-fullscreen');
+
+        const framesizeSel  = document.getElementById('cam-framesize');
+        const qualitySlider = document.getElementById('cam-quality');
+        const qualityVal    = document.getElementById('cam-quality-val');
+        const brightnessSlider = document.getElementById('cam-brightness');
+        const brightnessVal    = document.getElementById('cam-brightness-val');
+        const contrastSlider   = document.getElementById('cam-contrast');
+        const contrastVal      = document.getElementById('cam-contrast-val');
+        const saturationSlider = document.getElementById('cam-saturation');
+        const saturationVal    = document.getElementById('cam-saturation-val');
+        const vflipSel      = document.getElementById('cam-vflip');
+        const hmirrorSel    = document.getElementById('cam-hmirror');
+
+        const FRAMESIZE_NAMES = {
+          '5': 'QVGA',
+          '8': 'VGA',
+          '9': 'SVGA',
+          '10': 'XGA',
+          '13': 'UXGA',
+        };
+
+        let streaming = false;
+        let frameCount = 0;
+        let lastFpsTime = performance.now();
+
+        function baseUrl() {
+          const ip = ipInput.value.trim();
+          return 'http://' + ip;
+        }
+
+        function updateHudStatus(online, text) {
+          hudDot.classList.toggle('online', online);
+          hudStatus.textContent = text;
+          statusLabel.textContent = online ? 'ONLINE' : 'OFFLINE';
+          statusLabel.style.color = online ? '#39ffd8' : '#ff6674';
+        }
+
+        function startStream() {
+          const url = baseUrl();
+          ipDisplay.textContent = ipInput.value.trim();
+          offlineBox.classList.add('hidden');
+          updateHudStatus(false, 'CONNECTING');
+
+          // Cache-bust so the browser doesn't reuse a dead MJPEG connection
+          streamImg.src = url + ':81/stream?t=' + Date.now();
+          streaming = true;
+
+          streamImg.onload = () => {
+            updateHudStatus(true, 'LIVE');
+          };
+
+          streamImg.onerror = () => {
+            updateHudStatus(false, 'OFFLINE');
+            offlineBox.classList.remove('hidden');
+            streaming = false;
+            // Retry every 5s
+            setTimeout(() => {
+              if (!streaming) startStream();
+            }, 5000);
+          };
+        }
+
+        function stopStream() {
+          streamImg.src = '';
+          streaming = false;
+          updateHudStatus(false, 'STANDBY');
+          offlineBox.classList.add('hidden');
+        }
+
+        async function sendControl(varName, val) {
+          const url = baseUrl() + '/control?var=' + varName + '&val=' + val;
+          try {
+            await fetch(url, { mode: 'no-cors', cache: 'no-store' });
+          } catch (e) {
+            // ignore — ESP32 can't be read cross-origin
+          }
+        }
+
+        async function takeSnapshot() {
+          const url = baseUrl() + '/capture?_=' + Date.now();
+          try {
+            const res = await fetch(url, { mode: 'no-cors' });
+            // We can't read the response cross-origin, so instead use an
+            // <a download> trick on the img src directly.
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'aether-snapshot-' + Date.now() + '.jpg';
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+          } catch (e) {
+            console.warn('Snapshot failed', e);
+          }
+        }
+
+        function toggleFullscreen() {
+          const wrap = document.querySelector('.cam-video-wrap');
+          if (!document.fullscreenElement) {
+            wrap.requestFullscreen?.();
+          } else {
+            document.exitFullscreen?.();
+          }
+        }
+
+        // ==== Event wiring ====
+        startBtn.addEventListener('click', startStream);
+        stopBtn.addEventListener('click', stopStream);
+        snapshotBtn.addEventListener('click', takeSnapshot);
+        fullscreenBtn.addEventListener('click', toggleFullscreen);
+
+        framesizeSel.addEventListener('change', () => {
+          sendControl('framesize', framesizeSel.value);
+          hudRes.textContent = (FRAMESIZE_NAMES[framesizeSel.value] || '?') +
+                               ' · Q' + qualitySlider.value;
+        });
+
+        qualitySlider.addEventListener('input', () => {
+          qualityVal.textContent = qualitySlider.value;
+          sendControl('quality', qualitySlider.value);
+          hudRes.textContent = (FRAMESIZE_NAMES[framesizeSel.value] || '?') +
+                               ' · Q' + qualitySlider.value;
+        });
+
+        brightnessSlider.addEventListener('input', () => {
+          brightnessVal.textContent = brightnessSlider.value;
+          sendControl('brightness', brightnessSlider.value);
+        });
+
+        contrastSlider.addEventListener('input', () => {
+          contrastVal.textContent = contrastSlider.value;
+          sendControl('contrast', contrastSlider.value);
+        });
+
+        saturationSlider.addEventListener('input', () => {
+          saturationVal.textContent = saturationSlider.value;
+          sendControl('saturation', saturationSlider.value);
+        });
+
+        vflipSel.addEventListener('change', () => {
+          sendControl('vflip', vflipSel.value);
+        });
+
+        hmirrorSel.addEventListener('change', () => {
+          sendControl('hmirror', hmirrorSel.value);
+        });
+
+        // Auto-start the first time the camera tab is opened
+        let autoStarted = false;
+        tabs.forEach(tab => {
+          tab.addEventListener('click', () => {
+            if (tab.dataset.view === 'camera' && !autoStarted) {
+              autoStarted = true;
+              // Small delay so the layout is ready
+              setTimeout(startStream, 250);
+            }
+          });
+        });
+
+        // ==== HUD clock ====
+        function tickClock() {
+          const d = new Date();
+          hudClock.textContent =
+            String(d.getHours()).padStart(2, '0') + ':' +
+            String(d.getMinutes()).padStart(2, '0') + ':' +
+            String(d.getSeconds()).padStart(2, '0');
+        }
+        setInterval(tickClock, 1000);
+        tickClock();
+
+        // ==== Rough FPS meter from image load events ====
+        // Note: MJPEG streams don't expose frame events to JS, so we
+        // estimate by tracking "naturalWidth changes" is unreliable.
+        // We display a friendly approximation instead.
+        setInterval(() => {
+          if (streaming && streamImg.complete && streamImg.naturalWidth > 0) {
+            // Display a nominal value; real FPS is ESP32-driven
+            fpsLabel.textContent = '~15';
+          } else {
+            fpsLabel.textContent = '--';
+          }
+        }, 2000);
+      })();
+    </script>
+
+  </body>
+</html>
