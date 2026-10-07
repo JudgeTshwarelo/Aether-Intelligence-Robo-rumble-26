@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AETHER · SYNTHETIC CITY</title>
+    <meta name="description" content="AETHER / SKYNET digital twin" />
+    <link rel="stylesheet" href="/static/css/styles.css" />
+  </head>
+  <body>
+    <div id="app" class="app-shell">
+      <!-- 3D viewport -->
+      <div id="viewport"></div>
+
+      <!-- HUD: title block -->
+      <div id="hud-title" class="hud-title">
+        <div class="eyebrow">AETHER · SYNTHETIC CITY</div>
+        <div class="headline">DIGITAL TWIN</div>
+        <div id="status-summary" class="summary">0 buildings · 0 nodes · live traffic</div>
+      </div>
+
+      <!-- HUD: control bar -->
+      <div id="controls" class="control-bar">
+        <button id="toggle-view" class="toggle active">WORLD VIEW</button>
+        <button id="toggle-fpv" class="toggle">FPV</button>
+        <button id="toggle-scanlines" class="toggle">SCANLINES</button>
+        <button id="toggle-holo" class="toggle active">HOLO LAYER</button>
+        <button id="toggle-pause" class="toggle">⏸ PAUSE</button>
+        <button id="toggle-speed" class="toggle">SPEED 1×</button>
+      </div>
+
+      <!-- HUD: stats bar (top-center) -->
+      <div id="stats-bar" class="stats-bar">
+        <div class="stat">
+          <span class="stat-label">SIM TIME</span>
+          <span id="stat-time" class="stat-value">00:00.0</span>
+        </div>
+        <div class="stat-sep"></div>
+        <div class="stat">
+          <span class="stat-label">VEHICLES</span>
+          <span id="stat-vehicles" class="stat-value">0</span>
+        </div>
+        <div class="stat-sep"></div>
+        <div class="stat">
+          <span class="stat-label">MOVING</span>
+          <span id="stat-moving" class="stat-value text-emerald">0</span>
+        </div>
+        <div class="stat-sep"></div>
+        <div class="stat">
+          <span class="stat-label">STOPPED</span>
+          <span id="stat-stopped" class="stat-value text-amber">0</span>
+        </div>
+        <div class="stat-sep"></div>
+        <div class="stat">
+          <span class="stat-label">FPS</span>
+          <span id="stat-fps" class="stat-value">--</span>
+        </div>
+      </div>
+
+      <!-- HUD: legend -->
+      <div id="legend" class="legend">
+        <div class="legend-title">LEGEND</div>
+        <div class="legend-row"><span class="legend-dot" style="background:#ff3b3b;box-shadow:0 0 8px #ff3b3b"></span>HOSPITAL</div>
+        <div class="legend-row"><span class="legend-dot" style="background:#3b7aff;box-shadow:0 0 8px #3b7aff"></span>POLICE</div>
+        <div class="legend-row"><span class="legend-dot" style="background:#ff6a3b;box-shadow:0 0 8px #ff6a3b"></span>FIRE</div>
+        <div class="legend-row"><span class="legend-dot" style="background:#2ec4b6;box-shadow:0 0 8px #2ec4b6"></span>ENERGY</div>
+        <div class="legend-row"><span class="legend-dot" style="background:#d9dde3;box-shadow:0 0 8px #d9dde3"></span>VEHICLE</div>
+        <div class="legend-row"><span class="legend-dot" style="background:#f4a261;box-shadow:0 0 8px #f4a261"></span>SIGNAL</div>
+      </div>
+
+      <!-- HUD: minimap -->
+      <div id="minimap-wrap" class="minimap-wrap">
+        <div class="minimap-header">
+          <span class="minimap-title">SECTOR MAP</span>
+          <span id="minimap-zoom" class="minimap-zoom">1×</span>
+        </div>
+        <canvas id="minimap" width="220" height="220"></canvas>
+        <div class="minimap-footer">
+          <span id="minimap-coords">X 0 · Z 0</span>
+        </div>
+      </div>
+
+      <!-- HUD: follow-cam chip -->
+      <div id="follow-chip" class="follow-chip" hidden></div>
+
+      <!-- HUD: hint -->
+      <div id="orbit-hint" class="hint">drag · orbit &nbsp;·&nbsp; scroll · zoom &nbsp;·&nbsp; click entity · inspect</div>
+      <div id="fpv-hint" class="hint fpv-hint" hidden>WASD · MOVE · DRAG · LOOK · ESC · EXIT</div>
+
+      <!-- HUD: floating city name tags (optional, screen-space) -->
+      <div id="city-labels"></div>
+
+      <!-- HUD: selection panel -->
+      <div id="selection-panel" hidden></div>
+    </div>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.171.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.171.0/examples/jsm/"
+        }
+      }
+    </script>
+
+    <script type="module" src="/static/js/main.js"></script>
+  </body>
+</html>
