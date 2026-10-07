@@ -1,0 +1,628 @@
+Design a complete 3D-printable rugged handheld emergency communication device called:
+
+AETHER WATCH V1
+Adaptive Health & Emergency Assistant
+
+Use the attached Garmin inReach Mini 3 image as the primary industrial-design reference for the overall silhouette, proportions, ruggedness, and antenna placement, BUT DO NOT COPY THE GARMIN LOGO, branding, exact geometry, or proprietary design.
+
+The device should look like a professional field-deployed emergency communication device designed by an engineering team for rural emergency response, disaster response, medical teams, firefighters, police, rescue teams, hikers, and remote communities.
+
+IMPORTANT:
+This is a physical prototype enclosure intended for 3D printing. Prioritize manufacturability, realistic component placement, internal clearances, wall thickness, cable routing, assembly, and serviceability over purely cosmetic appearance.
+
+==================================================
+1. OVERALL DEVICE
+==================================================
+
+Create a compact rugged rectangular handheld device with rounded corners and a thick protective enclosure.
+
+Overall external dimensions:
+
+WIDTH: 50 mm
+HEIGHT: 68 mm
+DEPTH: 22 mm
+
+The device should have:
+- rounded outer corners
+- ruggedized side bumpers
+- slightly raised protective bezel around the display
+- thick impact-resistant enclosure
+- professional industrial-design appearance
+- compact proportions similar to a satellite communicator
+- ergonomic shape that can be held in one hand
+- clearly defined front, rear, top, left, right, and bottom surfaces
+
+Use approximately 2 mm minimum enclosure wall thickness.
+
+Use larger radii on the external corners, approximately 4–6 mm, to create a rugged handheld appearance.
+
+The enclosure consists of:
+1. Main front housing
+2. Rear removable cover
+3. Internal component mounting system
+4. Top antenna housing
+5. Protective side structures
+6. Optional strap/lanyard mounting points
+
+==================================================
+2. FRONT FACE
+==================================================
+
+The front face contains the OLED display.
+
+Use a 0.96-inch I2C OLED module.
+
+Approximate OLED PCB dimensions:
+
+27 mm × 27 mm
+
+Approximate visible display area:
+
+23 mm × 13 mm
+
+Create a recessed OLED mounting pocket approximately:
+
+27 mm × 27 mm
+
+The OLED must sit inside the enclosure rather than simply being placed on top.
+
+Create a smaller front viewing window approximately:
+
+23 mm × 13 mm
+
+The OLED viewing window should expose only the actual display area while hiding the PCB.
+
+Create a raised protective bezel around the display.
+
+The bezel should protrude approximately 1–1.5 mm from the front surface.
+
+The OLED should be positioned slightly above the vertical center of the device.
+
+Leave sufficient space below the display for status indicators and emergency controls.
+
+The front face should look like a professional field communicator, not a smartwatch.
+
+==================================================
+3. EMERGENCY / SOS BUTTON
+==================================================
+
+Create a dedicated physical emergency button.
+
+Button type:
+
+6 mm × 6 mm tactile push button.
+
+Create an external button opening approximately:
+
+7 mm diameter
+
+Position the emergency button on the RIGHT SIDE of the device.
+
+The button should be positioned approximately around the upper-middle portion of the enclosure.
+
+The button should be:
+- easy to locate without looking
+- protected against accidental activation
+- slightly recessed or surrounded by a protective guard
+- mechanically accessible from outside the enclosure
+
+Add a raised protective ring/guard around the button.
+
+The button should visually communicate:
+
+EMERGENCY / SOS
+
+Use a rugged red physical button in the conceptual visualization.
+
+==================================================
+4. STATUS LEDs
+==================================================
+
+Create two 5 mm LED mounting positions on the FRONT LOWER portion of the device.
+
+LED holes:
+
+approximately 5.2 mm diameter
+
+Place the LEDs horizontally next to each other.
+
+Spacing:
+
+approximately 10–14 mm center-to-center.
+
+LED 1:
+GREEN
+System / communication status
+
+LED 2:
+RED
+Emergency / alert status
+
+The LEDs should sit beneath the OLED.
+
+Create small recessed circular pockets around the LEDs so they are protected from impacts.
+
+The LED lenses should remain visible from the front.
+
+==================================================
+5. BUZZER / AUDIO OUTPUT
+==================================================
+
+Place the buzzer on the REAR of the enclosure.
+
+Use approximately:
+
+12 mm diameter buzzer
+
+Do not create one huge exposed opening.
+
+Instead create a professional acoustic grille consisting of multiple small circular holes.
+
+Recommended:
+
+6–8 holes
+
+Each hole:
+
+approximately 2 mm diameter
+
+Arrange the holes symmetrically in a circular or hexagonal pattern.
+
+The grille should be recessed slightly into the rear housing.
+
+The design should protect the buzzer from direct impact while allowing sound to escape.
+
+==================================================
+6. ESP32-C3 INTERNAL MOUNT
+==================================================
+
+The primary controller is an ESP32-C3 development board.
+
+Approximate board dimensions:
+
+52 mm × 28 mm × 12 mm
+
+Create an internal mounting area specifically for the ESP32-C3.
+
+Do NOT permanently fuse the ESP32 into the enclosure.
+
+Create mechanical supports/standoffs that allow the board to be secured.
+
+Use four mounting supports where physically appropriate.
+
+Suggested standoff dimensions:
+
+4 mm × 4 mm
+
+approximately 5–6 mm tall.
+
+Include clearance around:
+- USB connector
+- GPIO pins
+- antenna area
+- wiring
+- reset/boot controls
+
+The ESP32 should be removable for maintenance.
+
+The USB connector must remain accessible.
+
+==================================================
+7. BATTERY COMPARTMENT
+==================================================
+
+The power source is a 3.7 V LiPo battery.
+
+Approximate battery dimensions:
+
+40 mm × 30 mm × 6 mm
+
+Create a dedicated battery compartment inside the enclosure.
+
+The battery must NOT interfere with:
+- ESP32
+- OLED PCB
+- buzzer
+- button
+- wiring
+- rear cover
+
+Create a shallow battery pocket with approximately:
+
+0.5–1 mm additional clearance around the battery.
+
+Do not compress the battery.
+
+Create a removable or serviceable arrangement so the battery can be replaced.
+
+Provide a protected cable channel from the battery toward the ESP32 power connection.
+
+Avoid sharp internal edges that could damage battery wires.
+
+==================================================
+8. USB-C / CHARGING PORT
+==================================================
+
+Create a USB-C connector opening on the BOTTOM edge.
+
+Approximate opening:
+
+10 mm wide
+5 mm high
+
+The opening should be centered horizontally.
+
+Create enough internal clearance for the actual USB connector on the ESP32 development board.
+
+Add a small protective lip around the port.
+
+The USB opening should not compromise the enclosure structure.
+
+==================================================
+9. TOP ANTENNA HOUSING
+==================================================
+
+Create the characteristic vertical antenna structure inspired by rugged satellite communicators.
+
+Position:
+
+TOP CENTER
+
+Create a cylindrical or rounded antenna housing approximately:
+
+16 mm diameter
+15 mm height
+
+The antenna housing should merge naturally into the main enclosure.
+
+Use rounded transitions rather than a sharp cylinder-to-body connection.
+
+The antenna housing is initially a mechanical placeholder.
+
+DO NOT assume that the antenna itself is electrically correct.
+
+Design the housing so an actual antenna or RF module can later be installed.
+
+Provide an internal cable-routing path from the antenna region toward the electronics compartment.
+
+==================================================
+10. INTERNAL STRUCTURE
+==================================================
+
+Show the internal architecture in the CAD design.
+
+The device should contain distinct regions for:
+
+A. OLED
+B. ESP32-C3
+C. LiPo battery
+D. SOS button
+E. LEDs
+F. buzzer
+G. wiring
+H. USB connector
+
+Create internal cable channels where possible.
+
+Avoid unnecessary supports that obstruct assembly.
+
+Maintain at least approximately:
+
+1.5–2 mm clearance between enclosure structures and electronics where practical.
+
+Use fillets/chamfers on internal edges.
+
+Do not create impossible-to-print enclosed cavities.
+
+==================================================
+11. REAR COVER
+==================================================
+
+Create a separate removable rear cover.
+
+Rear cover dimensions should match the main enclosure.
+
+Target thickness:
+
+2 mm
+
+The rear cover should be mechanically removable.
+
+Design either:
+
+A. small screws + bosses
+
+OR
+
+B. snap-fit clips
+
+For the prototype, prefer:
+
+4 small screw bosses
+
+located near the corners.
+
+The screw bosses should not interfere with the ESP32 or battery.
+
+Create approximately 2.5–3 mm screw clearance holes depending on the intended screw size.
+
+The rear cover should have a slight perimeter lip that fits into the main body.
+
+==================================================
+12. STRAP / LANYARD MOUNT
+==================================================
+
+Add rugged mounting points near the top and bottom.
+
+The device should be compatible with:
+- wrist strap
+- neck lanyard
+- backpack attachment
+- belt attachment
+
+Create two reinforced mounting structures.
+
+Do not make them excessively thin.
+
+Minimum structural thickness approximately:
+
+3–4 mm
+
+==================================================
+13. RUGGED INDUSTRIAL DESIGN
+==================================================
+
+The device should NOT look like a normal smartwatch.
+
+It should look like:
+
+"professional emergency-response field hardware."
+
+Design language:
+
+- rugged
+- technical
+- military-inspired without military branding
+- industrial
+- compact
+- functional
+- repairable
+- field deployable
+
+Use:
+- chamfered edges
+- protective bumpers
+- recessed components
+- raised display bezel
+- protected buttons
+- reinforced antenna base
+- textured side surfaces
+- screw bosses
+- serviceable rear cover
+
+Avoid:
+- unnecessary decorative shapes
+- excessive futuristic styling
+- unrealistic floating parts
+- extremely thin walls
+- impossible internal geometry
+- smooth smartwatch aesthetics
+
+==================================================
+14. MANUFACTURING REQUIREMENTS
+==================================================
+
+The enclosure must be designed for FDM 3D printing.
+
+Target materials:
+
+PLA+
+PETG
+
+Prefer PETG for the functional field prototype.
+
+Use approximately:
+
+2 mm minimum walls
+
+3–4 mm structural supports
+
+2 mm rear cover
+
+Avoid unsupported overhangs where possible.
+
+Separate the design into printable components:
+
+1. Main housing
+2. Rear cover
+3. Antenna housing if necessary
+4. Button guard if necessary
+
+The model must be exportable to:
+
+STL
+
+and preferably:
+
+STEP
+
+for further CAD modification.
+
+==================================================
+15. ASSEMBLY
+==================================================
+
+Design the device so assembly follows approximately this order:
+
+1. Install OLED into front recess.
+2. Install LEDs.
+3. Install SOS button.
+4. Install buzzer.
+5. Install ESP32-C3.
+6. Install battery.
+7. Route wiring.
+8. Connect USB.
+9. Install antenna hardware if available.
+10. Close rear cover.
+11. Install screws.
+12. Attach strap/lanyard.
+
+Ensure components can actually be inserted and removed.
+
+==================================================
+16. EXPLODED VIEW
+==================================================
+
+Also generate an exploded CAD view showing:
+
+TOP:
+Antenna housing
+
+FRONT:
+Protective bezel
+OLED display
+LEDs
+SOS button
+
+INTERNAL:
+ESP32-C3
+Battery
+Buzzer
+Wiring
+Mounting standoffs
+
+REAR:
+Removable back cover
+Screw bosses
+
+Show how every component fits inside the enclosure.
+
+==================================================
+17. ENGINEERING DRAWINGS
+==================================================
+
+Generate technical views:
+
+FRONT VIEW
+SIDE VIEW
+REAR VIEW
+TOP VIEW
+BOTTOM VIEW
+EXPLODED VIEW
+SECTION VIEW
+
+Include dimension annotations for:
+
+50 mm overall width
+68 mm overall height
+22 mm overall depth
+27 × 27 mm OLED PCB pocket
+23 × 13 mm OLED viewing window
+7 mm SOS button hole
+5.2 mm LED holes
+10 × 5 mm USB opening
+16 × 15 mm antenna housing
+2 mm wall thickness
+
+==================================================
+18. VISUAL TARGET
+==================================================
+
+The final device should resemble a compact rugged satellite emergency communicator inspired by the attached Garmin inReach Mini 3 reference.
+
+The design should communicate:
+
+AETHER INTELLIGENCE
+Adaptive Health & Emergency Assistant
+
+It is intended to become a field node in the AETHER emergency-response ecosystem.
+
+The device should look capable of:
+
+- GPS positioning
+- emergency SOS
+- patient status reporting
+- communication with an AETHER command system
+- telemetry
+- sensor integration
+- future drone/rover integration
+
+However, do NOT add components that were not specified.
+
+Current hardware:
+
+1. ESP32-C3
+2. 0.96-inch I2C OLED
+3. 3.7 V LiPo battery
+4. 2 × 5 mm LEDs
+5. 6 × 6 mm SOS tactile button
+6. approximately 12 mm buzzer
+
+Do not invent additional sensors.
+
+==================================================
+19. IMPORTANT CAD RULE
+==================================================
+
+The design must be physically coherent.
+
+Do not simply place components visually inside the enclosure.
+
+Every component must have:
+- physical clearance
+- mounting method
+- cable access
+- insertion/removal path
+- realistic dimensions
+
+The OLED must fit inside its pocket.
+
+The ESP32 must fit inside the internal cavity.
+
+The battery must fit without being compressed.
+
+The USB connector must align with the external opening.
+
+The SOS button must mechanically reach the tactile switch.
+
+The LEDs must align with their front holes.
+
+The buzzer must align with the acoustic grille.
+
+==================================================
+20. FINAL OUTPUT
+==================================================
+
+Produce:
+
+1. Complete AETHER WATCH V1 enclosure
+2. Separate removable rear cover
+3. Internal mounting structure
+4. OLED recess
+5. OLED viewing window
+6. SOS button opening and protective guard
+7. Two LED openings
+8. Rear acoustic grille
+9. USB-C opening
+10. ESP32 mounting system
+11. Battery compartment
+12. Antenna housing
+13. Strap/lanyard mounts
+14. Exploded assembly
+15. Section view
+16. Dimensioned engineering views
+
+The final result should look like a real engineered prototype that could be 3D printed and assembled, not a concept-only render.
+
+Use the attached Garmin inReach Mini 3 image strictly as an industrial-design reference for silhouette and rugged communicator proportions.
+
+Product identity:
+
+AETHER WATCH V1
+Adaptive Health & Emergency Assistant
+AETHER INTELLIGENCE
+
+No Garmin branding.
+No Garmin logo.
+No copied proprietary markings.
+No unnecessary decorative text.
