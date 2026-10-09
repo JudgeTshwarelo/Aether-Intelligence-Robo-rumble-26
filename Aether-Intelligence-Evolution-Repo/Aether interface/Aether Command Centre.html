@@ -1,0 +1,1816 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Aether Command Centre</title>
+    <script src="./support.js"></script>
+  </head>
+  <body>
+    <x-dc>
+      <helmet>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&amp;family=Orbitron:wght@500;700&amp;display=swap"
+        />
+        <style>
+          body {
+            margin: 0;
+            background: #020812;
+          }
+          button {
+            font-family: inherit;
+          }
+        </style>
+      </helmet>
+      <div
+        style="
+          position: relative;
+          width: 1920px;
+          height: 1080px;
+          overflow: hidden;
+          box-sizing: border-box;
+          background: radial-gradient(
+            ellipse at 20% 0%,
+            #08203d 0%,
+            #030c1a 45%,
+            #020812 100%
+          );
+          font-family: Rajdhani, &quot;Segoe UI&quot;, sans-serif;
+          color: #d6e9f7;
+        "
+      >
+        <!-- ============ HEADER ============ -->
+        <div
+          style="
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1920px;
+            height: 92px;
+            box-sizing: border-box;
+            background: linear-gradient(180deg, #07172c 0%, #030b18 100%);
+            border-bottom: 1px solid rgba(0, 229, 255, 0.4);
+            box-shadow: 0 2px 24px rgba(0, 180, 255, 0.22);
+          "
+        >
+          <img
+            src="aether-logo.png"
+            alt="Aether-logo.png"
+            style="
+              position: absolute;
+              left: 24px;
+              top: 12px;
+              height: 68px;
+              width: auto;
+            "
+          />
+          <div
+            style="
+              position: absolute;
+              left: 112px;
+              top: 12px;
+              font-size: 29px;
+              font-weight: 500;
+              letter-spacing: 7px;
+              color: #eaf6ff;
+              white-space: nowrap;
+            "
+          >
+            AETHER INTELLIGENCE
+          </div>
+          <div
+            style="
+              position: absolute;
+              left: 114px;
+              top: 52px;
+              font-size: 17px;
+              font-weight: 500;
+              letter-spacing: 0.4px;
+              color: #cfe6f7;
+              white-space: nowrap;
+            "
+          >
+            Powering
+            <span style="color: #22d3ee">Smarter Decisions</span> Beyond Limits.
+          </div>
+
+          <!-- nav -->
+          <div
+            style="
+              position: absolute;
+              left: 524px;
+              top: 16px;
+              height: 56px;
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              padding: 0 10px 0 6px;
+              border-radius: 30px;
+              border: 1px solid rgba(0, 229, 255, 0.35);
+              background: rgba(6, 24, 46, 0.7);
+            "
+          >
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                height: 42px;
+                padding: 0 22px;
+                border-radius: 22px;
+                border: 1.5px solid #22d3ee;
+                background: rgba(0, 160, 220, 0.22);
+                box-shadow: 0 0 14px rgba(0, 229, 255, 0.35);
+                font-size: 16px;
+                font-weight: 600;
+                letter-spacing: 1px;
+                color: #5fe8ff;
+                white-space: nowrap;
+              "
+            >
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M3 8h11a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H3z"></path>
+                <path d="M16 12l5-3v8l-5-3"></path></svg
+              >LIVE FEED
+            </div>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                height: 42px;
+                padding: 0 20px;
+                font-size: 16px;
+                font-weight: 600;
+                letter-spacing: 1px;
+                color: #bcd6ea;
+                white-space: nowrap;
+              "
+            >
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#22d3ee"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="2.5"></circle>
+                <circle cx="12" cy="4" r="1.6"></circle>
+                <circle cx="4.5" cy="16.5" r="1.6"></circle>
+                <circle cx="19.5" cy="16.5" r="1.6"></circle>
+                <path
+                  d="M12 5.6v3.9M5.9 15.6l3.9-2.2M18.1 15.6l-3.9-2.2"
+                ></path></svg
+              >DIGITAL TWIN
+            </div>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                height: 42px;
+                padding: 0 20px;
+                font-size: 16px;
+                font-weight: 600;
+                letter-spacing: 1px;
+                color: #bcd6ea;
+                white-space: nowrap;
+              "
+            >
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#22d3ee"
+                stroke-width="2"
+                stroke-linecap="round"
+              >
+                <path d="M5 20v-5M10 20v-9M15 20V8M20 20V4"></path></svg
+              >ANALYTICS
+            </div>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                height: 42px;
+                padding: 0 20px;
+                font-size: 16px;
+                font-weight: 600;
+                letter-spacing: 1px;
+                color: #bcd6ea;
+                white-space: nowrap;
+              "
+            >
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#22d3ee"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="4"></rect>
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M12 3v3M12 18v3M3 12h3M18 12h3"></path></svg
+              >ASSETS
+            </div>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                height: 42px;
+                padding: 0 20px;
+                font-size: 16px;
+                font-weight: 600;
+                letter-spacing: 1px;
+                color: #bcd6ea;
+                white-space: nowrap;
+              "
+            >
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#22d3ee"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 3l7 17-7-4-7 4z"></path>
+                <path d="M12 3v13"></path></svg
+              >MISSIONS
+            </div>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                height: 42px;
+                padding: 0 20px;
+                font-size: 16px;
+                font-weight: 600;
+                letter-spacing: 1px;
+                color: #bcd6ea;
+                white-space: nowrap;
+              "
+            >
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#22d3ee"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="3"></circle>
+                <path
+                  d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M18.7 5.3l-2.1 2.1M7.4 16.6l-2.1 2.1"
+                ></path>
+                <circle cx="12" cy="12" r="6.5"></circle></svg
+              >SETTINGS
+            </div>
+          </div>
+
+          <!-- status -->
+          <div
+            style="
+              position: absolute;
+              left: 1424px;
+              top: 24px;
+              height: 42px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              padding: 0 18px;
+              border-radius: 22px;
+              border: 1.5px solid #ff4d5e;
+              background: rgba(120, 10, 25, 0.4);
+              box-shadow: 0 0 16px rgba(255, 60, 80, 0.45);
+              font-size: 16px;
+              font-weight: 700;
+              letter-spacing: 1.4px;
+              color: #ff8a96;
+              white-space: nowrap;
+            "
+          >
+            <span
+              style="
+                width: 12px;
+                height: 12px;
+                border-radius: 6px;
+                background: #ff3b4e;
+                box-shadow: 0 0 10px #ff3b4e;
+              "
+            ></span
+            >SYSTEM OFFLINE
+          </div>
+          <div
+            style="
+              position: absolute;
+              left: 1636px;
+              top: 34px;
+              font-size: 14.5px;
+              font-weight: 500;
+              letter-spacing: 0.4px;
+              color: #cfe6f7;
+              white-space: nowrap;
+            "
+          >
+            Robo-Rumble 26
+            <span style="color: #4a7898; padding: 0 6px">|</span> AETHER
+          </div>
+          <div
+            style="
+              position: absolute;
+              right: 26px;
+              top: 14px;
+              text-align: right;
+              white-space: nowrap;
+            "
+          >
+            <div
+              style="
+                font-family: Orbitron, Rajdhani, sans-serif;
+                font-size: 25px;
+                font-weight: 500;
+                letter-spacing: 1.5px;
+                color: #eaf6ff;
+                line-height: 1.2;
+              "
+            >
+              10:11
+            </div>
+            <div
+              style="
+                font-size: 13px;
+                font-weight: 600;
+                letter-spacing: 1px;
+                color: #6f93ad;
+                margin-top: 2px;
+              "
+            >
+              2026-10-09
+            </div>
+          </div>
+        </div>
+
+        <!-- ============ LEFT COLUMN ============ -->
+        <div
+          style="
+            position: absolute;
+            left: 24px;
+            top: 104px;
+            width: 428px;
+            height: 873px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+          "
+        >
+          <div
+            style="
+              flex: none;
+              height: 52px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              padding: 0 16px;
+              border-radius: 8px;
+              border: 1px solid rgba(0, 229, 255, 0.4);
+              background: rgba(5, 18, 38, 0.85);
+              box-shadow: 0 0 14px rgba(0, 160, 255, 0.18);
+            "
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#22d3ee"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 8h11a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H3z"></path>
+              <path d="M16 12l5-3v8l-5-3"></path>
+            </svg>
+            <div
+              style="
+                flex: 1;
+                font-size: 19px;
+                font-weight: 600;
+                letter-spacing: 1.2px;
+                color: #e6f4ff;
+              "
+            >
+              LIVE CAMERA FEEDS
+            </div>
+            <div
+              style="
+                font-size: 15px;
+                font-weight: 600;
+                letter-spacing: 0.6px;
+                color: #ffb020;
+              "
+            >
+              0/2 CONNECTED
+            </div>
+          </div>
+
+          <!-- camera 1 -->
+          <div
+            style="
+              flex: 1 1 0;
+              min-height: 0;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: column;
+              border-radius: 8px;
+              border: 1px solid rgba(0, 229, 255, 0.45);
+              background: rgba(4, 15, 32, 0.92);
+              box-shadow: 0 0 16px rgba(0, 160, 255, 0.2);
+            "
+          >
+            <div
+              style="
+                flex: none;
+                height: 42px;
+                display: flex;
+                align-items: center;
+                gap: 9px;
+                padding: 0 12px;
+              "
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#22d3ee"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="7" width="18" height="12" rx="2"></rect>
+                <circle cx="12" cy="13" r="3"></circle>
+                <path d="M8 7l1.5-2h5L16 7"></path>
+              </svg>
+              <div
+                style="
+                  flex: 1;
+                  font-size: 15px;
+                  font-weight: 600;
+                  letter-spacing: 0.9px;
+                  color: #e6f4ff;
+                  white-space: nowrap;
+                "
+              >
+                DRONE 01 — POLOKWANE
+              </div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 7px;
+                  height: 24px;
+                  padding: 0 10px;
+                  border-radius: 12px;
+                  border: 1px solid rgba(255, 176, 32, 0.7);
+                  background: rgba(90, 55, 0, 0.35);
+                  font-size: 11.5px;
+                  font-weight: 700;
+                  letter-spacing: 0.8px;
+                  color: #ffc65c;
+                  white-space: nowrap;
+                "
+              >
+                <span
+                  style="
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 4px;
+                    background: #ffb020;
+                    box-shadow: 0 0 8px #ffb020;
+                  "
+                ></span
+                >DRONE NOT CONNECTED
+              </div>
+            </div>
+            <div
+              style="
+                flex: 1;
+                min-height: 0;
+                position: relative;
+                margin: 0 8px;
+                overflow: hidden;
+                border-radius: 4px;
+                border: 1px solid rgba(0, 229, 255, 0.3);
+              "
+            >
+              <img
+                src="/_blob/01d235a0332d5d0d1b87e6674785416b"
+                alt="Sample aerial preview of a Polokwane road"
+                style="
+                  position: absolute;
+                  left: 0;
+                  top: 0;
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                "
+              />
+              <div
+                style="
+                  position: absolute;
+                  left: 0;
+                  top: 0;
+                  width: 100%;
+                  height: 100%;
+                  background: linear-gradient(
+                    180deg,
+                    rgba(2, 10, 24, 0.35) 0%,
+                    rgba(2, 10, 24, 0) 28%,
+                    rgba(2, 10, 24, 0) 62%,
+                    rgba(2, 10, 24, 0.85) 100%
+                  );
+                "
+              ></div>
+              <div
+                style="
+                  position: absolute;
+                  left: 8px;
+                  top: 8px;
+                  padding: 3px 9px;
+                  border-radius: 3px;
+                  background: rgba(3, 12, 26, 0.8);
+                  border: 1px solid rgba(255, 176, 32, 0.55);
+                  font-size: 11px;
+                  font-weight: 700;
+                  letter-spacing: 1px;
+                  color: #ffc65c;
+                "
+              >
+                SAMPLE IMAGERY · NOT LIVE
+              </div>
+              <div
+                style="
+                  position: absolute;
+                  left: 10px;
+                  bottom: 7px;
+                  display: flex;
+                  gap: 16px;
+                  font-size: 12.5px;
+                  font-weight: 600;
+                  letter-spacing: 0.6px;
+                  color: #9fd8ee;
+                  white-space: nowrap;
+                "
+              >
+                <span>LAT -23.9045</span><span>LON 29.4587</span
+                ><span>ALT 120 m</span>
+              </div>
+            </div>
+            <div
+              style="
+                flex: none;
+                height: 34px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 12px;
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: 0.9px;
+                color: #6f93ad;
+              "
+            >
+              <span>VIDEO LINK · AWAITING DRONE</span
+              ><span>TELEMETRY · SAMPLE</span>
+            </div>
+          </div>
+
+          <!-- camera 2 -->
+          <div
+            style="
+              flex: 1 1 0;
+              min-height: 0;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: column;
+              border-radius: 8px;
+              border: 1px solid rgba(0, 229, 255, 0.45);
+              background: rgba(4, 15, 32, 0.92);
+              box-shadow: 0 0 16px rgba(0, 160, 255, 0.2);
+            "
+          >
+            <div
+              style="
+                flex: none;
+                height: 42px;
+                display: flex;
+                align-items: center;
+                gap: 9px;
+                padding: 0 12px;
+              "
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#22d3ee"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="7" width="18" height="12" rx="2"></rect>
+                <circle cx="12" cy="13" r="3"></circle>
+                <path d="M8 7l1.5-2h5L16 7"></path>
+              </svg>
+              <div
+                style="
+                  flex: 1;
+                  font-size: 15px;
+                  font-weight: 600;
+                  letter-spacing: 0.9px;
+                  color: #e6f4ff;
+                  white-space: nowrap;
+                "
+              >
+                DRONE 02 — MANKWENG
+              </div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 7px;
+                  height: 24px;
+                  padding: 0 10px;
+                  border-radius: 12px;
+                  border: 1px solid rgba(255, 176, 32, 0.7);
+                  background: rgba(90, 55, 0, 0.35);
+                  font-size: 11.5px;
+                  font-weight: 700;
+                  letter-spacing: 0.8px;
+                  color: #ffc65c;
+                  white-space: nowrap;
+                "
+              >
+                <span
+                  style="
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 4px;
+                    background: #ffb020;
+                    box-shadow: 0 0 8px #ffb020;
+                  "
+                ></span
+                >DRONE NOT CONNECTED
+              </div>
+            </div>
+            <div
+              style="
+                flex: 1;
+                min-height: 0;
+                position: relative;
+                margin: 0 8px;
+                overflow: hidden;
+                border-radius: 4px;
+                border: 1px solid rgba(0, 229, 255, 0.3);
+              "
+            >
+              <img
+                src="/_blob/6ce14bc828efb237f23a2e2e091d44a5"
+                alt="Sample aerial preview of the Mankweng hospital area"
+                style="
+                  position: absolute;
+                  left: 0;
+                  top: 0;
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                "
+              />
+              <div
+                style="
+                  position: absolute;
+                  left: 0;
+                  top: 0;
+                  width: 100%;
+                  height: 100%;
+                  background: linear-gradient(
+                    180deg,
+                    rgba(2, 10, 24, 0.35) 0%,
+                    rgba(2, 10, 24, 0) 28%,
+                    rgba(2, 10, 24, 0) 62%,
+                    rgba(2, 10, 24, 0.85) 100%
+                  );
+                "
+              ></div>
+              <div
+                style="
+                  position: absolute;
+                  left: 8px;
+                  top: 8px;
+                  padding: 3px 9px;
+                  border-radius: 3px;
+                  background: rgba(3, 12, 26, 0.8);
+                  border: 1px solid rgba(255, 176, 32, 0.55);
+                  font-size: 11px;
+                  font-weight: 700;
+                  letter-spacing: 1px;
+                  color: #ffc65c;
+                "
+              >
+                SAMPLE IMAGERY · NOT LIVE
+              </div>
+              <div
+                style="
+                  position: absolute;
+                  left: 10px;
+                  bottom: 7px;
+                  display: flex;
+                  gap: 16px;
+                  font-size: 12.5px;
+                  font-weight: 600;
+                  letter-spacing: 0.6px;
+                  color: #9fd8ee;
+                  white-space: nowrap;
+                "
+              >
+                <span>LAT -23.9172</span><span>LON 29.4731</span
+                ><span>ALT 150 m</span>
+              </div>
+            </div>
+            <div
+              style="
+                flex: none;
+                height: 34px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 12px;
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: 0.9px;
+                color: #6f93ad;
+              "
+            >
+              <span>VIDEO LINK · AWAITING DRONE</span
+              ><span>TELEMETRY · SAMPLE</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============ DIGITAL TWIN ============ -->
+        <div
+          style="
+            position: absolute;
+            left: 472px;
+            top: 104px;
+            width: 1424px;
+            height: 873px;
+            overflow: hidden;
+            box-sizing: border-box;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 229, 255, 0.55);
+            box-shadow: 0 0 22px rgba(0, 170, 255, 0.3);
+            background: #04101f;
+          "
+        >
+          <img
+            src="/_blob/15be0bd7ad021ae364855bf615ebc45a"
+            alt="3D digital twin preview of Polokwane and Mankweng, Limpopo"
+            style="
+              position: absolute;
+              left: 0;
+              top: 0;
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            "
+          />
+          <div
+            style="
+              position: absolute;
+              left: 0;
+              top: 0;
+              width: 100%;
+              height: 100%;
+              background: radial-gradient(
+                ellipse at 50% 50%,
+                rgba(2, 8, 18, 0) 62%,
+                rgba(2, 8, 18, 0.5) 100%
+              );
+            "
+          ></div>
+
+          <!-- title + status -->
+          <div
+            style="
+              position: absolute;
+              left: 0;
+              top: 0;
+              width: 452px;
+              height: 100px;
+              box-sizing: border-box;
+              padding: 12px 18px;
+              border-right: 1px solid rgba(0, 229, 255, 0.5);
+              border-bottom: 1px solid rgba(0, 229, 255, 0.5);
+              border-bottom-right-radius: 16px;
+              background: linear-gradient(
+                135deg,
+                rgba(3, 13, 28, 0.97),
+                rgba(4, 18, 38, 0.92)
+              );
+              display: flex;
+              flex-direction: column;
+              gap: 7px;
+            "
+          >
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                font-size: 21px;
+                font-weight: 600;
+                letter-spacing: 1.3px;
+                color: #eaf6ff;
+                white-space: nowrap;
+              "
+            >
+              <svg
+                width="26"
+                height="26"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#22d3ee"
+                stroke-width="1.6"
+                stroke-linecap="round"
+              >
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="M3 12h18"></path>
+                <path
+                  d="M12 3c3.5 3 3.5 15 0 18M12 3c-3.5 3-3.5 15 0 18"
+                ></path></svg
+              >DIGITAL TWIN — LIMPOPO PROVINCE
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px">
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                  height: 26px;
+                  padding: 0 12px;
+                  border-radius: 13px;
+                  border: 1px solid rgba(255, 176, 32, 0.75);
+                  background: rgba(90, 55, 0, 0.4);
+                  font-size: 13px;
+                  font-weight: 700;
+                  letter-spacing: 1px;
+                  color: #ffc65c;
+                  white-space: nowrap;
+                "
+              >
+                <span
+                  style="
+                    width: 9px;
+                    height: 9px;
+                    border-radius: 5px;
+                    background: #ffb020;
+                    box-shadow: 0 0 8px #ffb020;
+                  "
+                ></span
+                >BACKEND NOT CONNECTED
+              </div>
+            </div>
+            <div
+              style="
+                font-size: 13px;
+                font-style: italic;
+                letter-spacing: 0.4px;
+                color: #7fa4be;
+                white-space: nowrap;
+              "
+            >
+              3D visual preview • Awaiting backend integration
+            </div>
+          </div>
+
+          <!-- location selector -->
+          <div
+            style="
+              position: absolute;
+              right: 14px;
+              top: 12px;
+              width: 250px;
+              height: 40px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              padding: 0 14px;
+              border-radius: 8px;
+              border: 1px solid rgba(0, 229, 255, 0.55);
+              background: rgba(4, 16, 34, 0.92);
+              font-size: 15.5px;
+              font-weight: 600;
+              letter-spacing: 0.4px;
+              color: #eaf6ff;
+            "
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#22d3ee"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"
+              ></path>
+              <circle cx="12" cy="9.5" r="2.4"></circle>
+            </svg>
+            <span style="flex: 1">Polokwane, Limpopo</span>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#9fd8ee"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M6 9l6 6 6-6"></path>
+            </svg>
+          </div>
+
+          <!-- compass -->
+          <div
+            style="
+              position: absolute;
+              right: 22px;
+              top: 70px;
+              width: 90px;
+              height: 90px;
+              box-sizing: border-box;
+              border-radius: 45px;
+              border: 1.5px solid rgba(0, 229, 255, 0.65);
+              background: rgba(4, 16, 34, 0.88);
+              box-shadow: 0 0 12px rgba(0, 200, 255, 0.3);
+            "
+          >
+            <div
+              style="
+                position: absolute;
+                left: 0;
+                top: 4px;
+                width: 100%;
+                text-align: center;
+                font-size: 12px;
+                font-weight: 700;
+                color: #cfe6f7;
+              "
+            >
+              N
+            </div>
+            <div
+              style="
+                position: absolute;
+                left: 0;
+                bottom: 4px;
+                width: 100%;
+                text-align: center;
+                font-size: 12px;
+                font-weight: 700;
+                color: #cfe6f7;
+              "
+            >
+              S
+            </div>
+            <div
+              style="
+                position: absolute;
+                left: 7px;
+                top: 34px;
+                font-size: 12px;
+                font-weight: 700;
+                color: #cfe6f7;
+              "
+            >
+              W
+            </div>
+            <div
+              style="
+                position: absolute;
+                right: 7px;
+                top: 34px;
+                font-size: 12px;
+                font-weight: 700;
+                color: #cfe6f7;
+              "
+            >
+              E
+            </div>
+            <svg
+              style="position: absolute; left: 25px; top: 25px"
+              width="38"
+              height="38"
+              viewBox="0 0 38 38"
+            >
+              <path d="M19 3l6 17-6-4-6 4z" fill="#22d3ee"></path>
+              <path d="M19 35l-6-15 6 4 6-4z" fill="#0b5f86"></path>
+            </svg>
+          </div>
+
+          <!-- zoom controls -->
+          <div
+            style="
+              position: absolute;
+              right: 22px;
+              top: 176px;
+              width: 52px;
+              box-sizing: border-box;
+              border-radius: 8px;
+              border: 1px solid rgba(0, 229, 255, 0.6);
+              background: rgba(4, 16, 34, 0.9);
+              overflow: hidden;
+            "
+          >
+            <div
+              style="
+                height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-bottom: 1px solid rgba(0, 229, 255, 0.3);
+              "
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                stroke="#eaf6ff"
+                stroke-width="2.4"
+                stroke-linecap="round"
+              >
+                <path d="M12 4v16M4 12h16"></path>
+              </svg>
+            </div>
+            <div
+              style="
+                height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-bottom: 1px solid rgba(0, 229, 255, 0.3);
+              "
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                stroke="#eaf6ff"
+                stroke-width="2.4"
+                stroke-linecap="round"
+              >
+                <path d="M4 12h16"></path>
+              </svg>
+            </div>
+            <div
+              style="
+                height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 17px;
+                font-weight: 700;
+                letter-spacing: 0.5px;
+                color: #eaf6ff;
+              "
+            >
+              3D
+            </div>
+          </div>
+
+          <!-- total assets -->
+          <div
+            style="
+              position: absolute;
+              left: 0;
+              bottom: 0;
+              width: 410px;
+              height: 152px;
+              box-sizing: border-box;
+              padding: 12px 16px 10px;
+              border-top: 1px solid rgba(0, 229, 255, 0.55);
+              border-right: 1px solid rgba(0, 229, 255, 0.55);
+              border-top-right-radius: 12px;
+              background: linear-gradient(
+                180deg,
+                rgba(4, 17, 36, 0.96),
+                rgba(3, 12, 26, 0.98)
+              );
+              display: flex;
+              flex-direction: column;
+            "
+          >
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+              "
+            >
+              <div
+                style="
+                  font-size: 17px;
+                  font-weight: 600;
+                  letter-spacing: 1.2px;
+                  color: #22d3ee;
+                "
+              >
+                TOTAL ASSETS
+              </div>
+              <div
+                style="
+                  font-size: 11px;
+                  font-weight: 700;
+                  letter-spacing: 1px;
+                  color: #ffc65c;
+                "
+              >
+                SAMPLE DATA
+              </div>
+            </div>
+            <div
+              style="
+                flex: 1;
+                display: flex;
+                align-items: stretch;
+                margin-top: 6px;
+              "
+            >
+              <div
+                style="
+                  flex: 1;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  justify-content: center;
+                  gap: 2px;
+                "
+              >
+                <svg
+                  width="34"
+                  height="34"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#9fe8ff"
+                  stroke-width="1.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="5" cy="5" r="2.4"></circle>
+                  <circle cx="19" cy="5" r="2.4"></circle>
+                  <circle cx="5" cy="19" r="2.4"></circle>
+                  <circle cx="19" cy="19" r="2.4"></circle>
+                  <rect x="9" y="10" width="6" height="4" rx="1.2"></rect>
+                  <path d="M7 7l3 3M17 7l-3 3M7 17l3-3M17 17l-3-3"></path>
+                </svg>
+                <div
+                  style="
+                    font-size: 26px;
+                    font-weight: 600;
+                    line-height: 1;
+                    color: #eaf6ff;
+                  "
+                >
+                  2
+                </div>
+                <div style="font-size: 13px; font-weight: 500; color: #9bb8cf">
+                  Drones
+                </div>
+              </div>
+              <div
+                style="width: 1px; background: rgba(0, 229, 255, 0.28)"
+              ></div>
+              <div
+                style="
+                  flex: 1;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  justify-content: center;
+                  gap: 2px;
+                "
+              >
+                <svg
+                  width="34"
+                  height="34"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#9fe8ff"
+                  stroke-width="1.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M4 15h16v3H4z"></path>
+                  <path d="M7 15v-3h9l2 3"></path>
+                  <path d="M12 12V7l4-2"></path>
+                  <circle cx="7" cy="19.5" r="1.6"></circle>
+                  <circle cx="17" cy="19.5" r="1.6"></circle>
+                </svg>
+                <div
+                  style="
+                    font-size: 26px;
+                    font-weight: 600;
+                    line-height: 1;
+                    color: #eaf6ff;
+                  "
+                >
+                  1
+                </div>
+                <div style="font-size: 13px; font-weight: 500; color: #9bb8cf">
+                  Rover
+                </div>
+              </div>
+              <div
+                style="width: 1px; background: rgba(0, 229, 255, 0.28)"
+              ></div>
+              <div
+                style="
+                  flex: 1;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  justify-content: center;
+                  gap: 2px;
+                "
+              >
+                <svg
+                  width="34"
+                  height="34"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#9fe8ff"
+                  stroke-width="1.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M3 16l1.6-6a2 2 0 0 1 1.9-1.5h11a2 2 0 0 1 1.9 1.5L21 16v3H3z"
+                  ></path>
+                  <path d="M4 12h16"></path>
+                  <circle cx="7.5" cy="16" r="0.8"></circle>
+                  <circle cx="16.5" cy="16" r="0.8"></circle>
+                </svg>
+                <div
+                  style="
+                    font-size: 26px;
+                    font-weight: 600;
+                    line-height: 1;
+                    color: #eaf6ff;
+                  "
+                >
+                  4
+                </div>
+                <div style="font-size: 13px; font-weight: 500; color: #9bb8cf">
+                  Vehicles
+                </div>
+              </div>
+              <div
+                style="width: 1px; background: rgba(0, 229, 255, 0.28)"
+              ></div>
+              <div
+                style="
+                  flex: 1;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  justify-content: center;
+                  gap: 2px;
+                "
+              >
+                <svg
+                  width="34"
+                  height="34"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#9fe8ff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                >
+                  <path d="M5 20v-4M10 20v-8M15 20v-12M20 20V4"></path>
+                </svg>
+                <div
+                  style="
+                    font-size: 26px;
+                    font-weight: 600;
+                    line-height: 1;
+                    color: #eaf6ff;
+                  "
+                >
+                  12
+                </div>
+                <div style="font-size: 13px; font-weight: 500; color: #9bb8cf">
+                  Sensors
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- emergency alert -->
+          <div
+            style="
+              position: absolute;
+              right: 0;
+              bottom: 0;
+              width: 400px;
+              height: 282px;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: column;
+              border: 2px solid #ff3b4e;
+              border-right: none;
+              border-bottom: none;
+              border-top-left-radius: 12px;
+              background: linear-gradient(
+                180deg,
+                rgba(48, 6, 14, 0.97),
+                rgba(26, 4, 10, 0.98)
+              );
+              box-shadow: 0 0 22px rgba(255, 50, 70, 0.5);
+            "
+          >
+            <div
+              style="
+                flex: none;
+                height: 48px;
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                gap: 11px;
+                padding: 0 16px;
+                border-bottom: 1px solid rgba(255, 80, 100, 0.45);
+              "
+            >
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#ff4d5e"
+                stroke-width="2"
+                stroke-linecap="round"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 7v6.5"></path>
+                <circle cx="12" cy="17" r="0.6" fill="#ff4d5e"></circle>
+              </svg>
+              <div
+                style="
+                  flex: 1;
+                  font-size: 19px;
+                  font-weight: 600;
+                  letter-spacing: 1.4px;
+                  color: #fff0f2;
+                "
+              >
+                EMERGENCY ALERT
+              </div>
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#ff6b78"
+                stroke-width="2.4"
+                stroke-linecap="round"
+              >
+                <path d="M5 5l14 14M19 5L5 19"></path>
+              </svg>
+            </div>
+            <div
+              style="
+                flex: none;
+                display: flex;
+                gap: 14px;
+                padding: 12px 16px 10px;
+              "
+            >
+              <div
+                style="
+                  flex: none;
+                  width: 74px;
+                  height: 92px;
+                  box-sizing: border-box;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  border-radius: 6px;
+                  border: 1px solid rgba(255, 90, 110, 0.5);
+                  background: rgba(10, 30, 60, 0.6);
+                "
+              >
+                <svg
+                  width="46"
+                  height="52"
+                  viewBox="0 0 24 28"
+                  fill="none"
+                  stroke="#4fc3ff"
+                  stroke-width="1.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="9" r="5"></circle>
+                  <path d="M3 26c0-5.5 4-9 9-9s9 3.5 9 9"></path>
+                  <path d="M18 3v4M16 5h4" stroke="#8fdcff"></path>
+                </svg>
+              </div>
+              <div
+                style="
+                  flex: 1;
+                  min-width: 0;
+                  font-size: 14px;
+                  font-weight: 500;
+                  line-height: 1.38;
+                  color: #e8d6da;
+                "
+              >
+                <div
+                  style="
+                    font-size: 16.5px;
+                    font-weight: 700;
+                    letter-spacing: 0.9px;
+                    color: #ff6b78;
+                    margin-bottom: 2px;
+                  "
+                >
+                  MEDICAL EMERGENCY
+                </div>
+                <div>Patient ID: DEMO-A2847</div>
+                <div>Location: Polokwane CBD</div>
+                <div>
+                  Coordinates: -23.9045, 29.4587
+                  <span style="color: #9a7a82">(sample)</span>
+                </div>
+                <div>
+                  Condition:
+                  <span style="font-weight: 700; color: #ff4d5e"
+                    >CRITICAL — DEMO DATA</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              style="flex: none; display: flex; gap: 10px; padding: 4px 16px 0"
+            >
+              <button
+                style="
+                  flex: 1.3;
+                  height: 44px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  gap: 8px;
+                  border-radius: 6px;
+                  border: 1px solid #ff6b78;
+                  background: linear-gradient(180deg, #e0243a, #a8101f);
+                  box-shadow: 0 0 14px rgba(255, 50, 70, 0.5);
+                  font-size: 13.5px;
+                  font-weight: 700;
+                  letter-spacing: 0.8px;
+                  color: #fff;
+                  cursor: default;
+                "
+              >
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M3 16V9a1 1 0 0 1 1-1h10l4 4h3v4H3z"></path>
+                  <circle cx="7.5" cy="17.5" r="1.8"></circle>
+                  <circle cx="17" cy="17.5" r="1.8"></circle>
+                  <path d="M9 10.5v3M7.5 12h3"></path></svg
+                >DISPATCH AMBULANCE
+              </button>
+              <button
+                style="
+                  flex: 1;
+                  height: 44px;
+                  border-radius: 6px;
+                  border: 1px solid rgba(0, 229, 255, 0.65);
+                  background: rgba(5, 30, 56, 0.8);
+                  font-size: 13.5px;
+                  font-weight: 700;
+                  letter-spacing: 0.8px;
+                  color: #bfeaff;
+                  cursor: default;
+                "
+              >
+                VIEW DETAILS
+              </button>
+            </div>
+            <div
+              style="
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 11px;
+                font-weight: 600;
+                letter-spacing: 1px;
+                color: #a98089;
+              "
+            >
+              UI PROTOTYPE — NO DISPATCH CONNECTION
+            </div>
+          </div>
+        </div>
+
+        <!-- ============ STATUS BAR ============ -->
+        <div
+          style="
+            position: absolute;
+            left: 24px;
+            top: 989px;
+            width: 1872px;
+            height: 66px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            padding: 0 22px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 229, 255, 0.45);
+            background: linear-gradient(
+              180deg,
+              rgba(5, 19, 40, 0.95),
+              rgba(3, 11, 24, 0.97)
+            );
+            box-shadow: 0 0 16px rgba(0, 160, 255, 0.2);
+          "
+        >
+          <div style="display: flex; align-items: center; gap: 14px">
+            <div
+              style="
+                width: 40px;
+                height: 40px;
+                box-sizing: border-box;
+                border-radius: 20px;
+                border: 1.5px solid #22d3ee;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#22d3ee"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M3 12h4l2-5 4 10 2-5h6"></path>
+              </svg>
+            </div>
+            <div
+              style="
+                font-size: 21px;
+                font-weight: 600;
+                letter-spacing: 1.4px;
+                color: #22d3ee;
+                white-space: nowrap;
+              "
+            >
+              AETHER WATCH
+            </div>
+          </div>
+          <div
+            style="
+              width: 1px;
+              height: 28px;
+              margin: 0 26px;
+              background: rgba(0, 229, 255, 0.3);
+            "
+          ></div>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 9px;
+              font-size: 14px;
+              font-weight: 600;
+              letter-spacing: 0.7px;
+              color: #9fd8ee;
+              white-space: nowrap;
+            "
+          >
+            <span
+              style="
+                width: 10px;
+                height: 10px;
+                border-radius: 5px;
+                background: #22d3ee;
+                box-shadow: 0 0 8px #22d3ee;
+              "
+            ></span
+            >3 PATIENTS MONITORED
+          </div>
+          <div
+            style="
+              width: 1px;
+              height: 22px;
+              margin: 0 24px;
+              background: rgba(0, 229, 255, 0.25);
+            "
+          ></div>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 9px;
+              font-size: 14px;
+              font-weight: 600;
+              letter-spacing: 0.7px;
+              color: #ffd27a;
+              white-space: nowrap;
+            "
+          >
+            <span
+              style="
+                width: 10px;
+                height: 10px;
+                border-radius: 5px;
+                background: #ffb020;
+                box-shadow: 0 0 8px #ffb020;
+              "
+            ></span
+            >1 ACTIVE ALERT
+          </div>
+          <div
+            style="
+              width: 1px;
+              height: 22px;
+              margin: 0 24px;
+              background: rgba(0, 229, 255, 0.25);
+            "
+          ></div>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 9px;
+              font-size: 14px;
+              font-weight: 600;
+              letter-spacing: 0.7px;
+              color: #ff8a96;
+              white-space: nowrap;
+            "
+          >
+            <span
+              style="
+                width: 10px;
+                height: 10px;
+                border-radius: 5px;
+                background: #ff3b4e;
+                box-shadow: 0 0 8px #ff3b4e;
+              "
+            ></span
+            >2 DRONES IN AIR
+          </div>
+          <div
+            style="
+              margin-left: 26px;
+              height: 22px;
+              display: flex;
+              align-items: center;
+              padding: 0 10px;
+              border-radius: 11px;
+              border: 1px solid rgba(255, 176, 32, 0.6);
+              font-size: 11px;
+              font-weight: 700;
+              letter-spacing: 1px;
+              color: #ffc65c;
+              white-space: nowrap;
+            "
+          >
+            DEMO DATA
+          </div>
+          <div style="flex: 1"></div>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              font-size: 14px;
+              font-weight: 500;
+              color: #cfe6f7;
+              white-space: nowrap;
+            "
+          >
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#9fd8ee"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="8" cy="8" r="3"></circle>
+              <path d="M8 2v1M2 8h1M3.8 3.8l.7.7M12.2 3.8l-.7.7"></path>
+              <path
+                d="M7 20h10a3.5 3.5 0 0 0 .4-7A5 5 0 0 0 8 12.5 3.8 3.8 0 0 0 7 20z"
+              ></path>
+            </svg>
+            <span>18°C</span>
+            <span
+              style="
+                width: 1px;
+                height: 20px;
+                background: rgba(0, 229, 255, 0.28);
+              "
+            ></span>
+            <span>Partly Cloudy</span>
+            <span
+              style="
+                width: 1px;
+                height: 20px;
+                background: rgba(0, 229, 255, 0.28);
+              "
+            ></span>
+            <span style="letter-spacing: 1px">LIMPOPO</span>
+            <span
+              style="
+                width: 1px;
+                height: 20px;
+                background: rgba(0, 229, 255, 0.28);
+              "
+            ></span>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#22d3ee"
+              stroke-width="2.4"
+              stroke-linecap="round"
+            >
+              <path d="M5 20v-4M10 20v-8M15 20v-12M20 20V4"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </x-dc>
+    <script
+      type="text/x-dc"
+      data-dc-script
+      data-props='{"$preview":{"width":1920,"height":1080}}'
+    >
+      class Component extends DCLogic {
+      renderVals() {
+      return {};
+      }
+      }
+    </script>
+  </body>
+</html>
