@@ -1,0 +1,205 @@
+Smart Wearable — Complete CAD Design Brief
+
+Design a real, functional, 3D-printable smartwatch enclosure for the Smart Wearable project. The watch should look like a polished, modern smartwatch while providing enough internal space for the electronics.
+
+The design must be openable, rechargeable, serviceable, and practical to assemble.
+
+1. Overall form
+
+- Approximate watch diameter: 45 mm
+- Keep the watch as compact and slim as reasonably possible.
+- Target overall thickness: approximately 10–12 mm, depending on the actual component dimensions.
+- Use a smooth, rounded, modern smartwatch shape rather than a bulky electronics box.
+- Rounded edges and comfortable surfaces should make it look wearable.
+- Use the AETHER WATCH V1 engineering sheet as the dimensional baseline where applicable.
+- The final design should look like a real consumer wearable, not a rough prototype enclosure.
+
+2. Two-piece / openable construction
+
+The watch must consist of an openable enclosure, with a main body and removable cover.
+
+The enclosure must allow the user to open the watch to:
+
+- Access the electronics
+- Replace/service the battery
+- Inspect wiring
+- Repair or replace components
+- Maintain the device
+
+Use suitable screw posts, fastening points, clips, or another practical fastening method. Avoid permanently sealing the electronics inside.
+
+The cover should fit securely without making the watch difficult to open.
+
+3. Internal electronics cavity
+
+The inside must have enough room for the actual components, including:
+
+- Mini ESP32 development board
+- OLED display
+- Rechargeable battery
+- Heart-rate sensor
+- Capacitive/skin-contact sensor
+- GPS/location module
+- GSM/communication module
+- Buzzer
+- LEDs
+- Buttons
+- Wiring and connectors
+
+Do not design the cavity to exactly match the component dimensions. Include reasonable clearance for wiring, connectors, assembly and tolerances.
+
+Include internal mounting supports/standoffs where useful so components do not move freely inside the watch.
+
+4. OLED display
+
+The OLED is a major part of the front design.
+
+Create a clean OLED viewing window/opening on the top cover.
+
+The OLED should be:
+
+- Centrally positioned
+- Properly supported from underneath
+- Protected by the surrounding case
+- Easy to see from the front
+- Integrated into the design rather than simply sitting on top of the case
+
+The front geometry should be designed around the actual OLED dimensions.
+
+5. SOS button and controls
+
+Provide a clearly accessible SOS button on the side of the watch.
+
+The button should:
+
+- Be easy to press
+- Not interfere with the wrist
+- Have enough clearance for its physical mechanism
+- Be integrated into the overall aesthetic
+
+Provide additional openings/mounting locations for other required controls where necessary.
+
+6. LEDs
+
+Provide suitable positions for the status LEDs.
+
+The LEDs should be visible without making the watch look cluttered.
+
+Use small openings/light guides where appropriate.
+
+7. Buzzer / sound
+
+Provide a suitable sound outlet/grille for the buzzer.
+
+The buzzer should remain protected inside the enclosure while allowing the alarm sound to escape.
+
+Use a neat pattern of small holes rather than one large exposed opening.
+
+8. Rear / skin-contact area
+
+The rear of the watch must include the required skin-contact sensor area.
+
+This is important:
+
+Do not completely seal the sensor behind solid plastic.
+
+Provide an appropriate:
+
+- Sensor opening/window, or
+- Raised sensor-contact area
+
+so that the sensor can physically reach the user's skin when the watch is worn.
+
+The rear should remain comfortable against the wrist.
+
+9. Rechargeable battery
+
+The watch must be designed around a rechargeable battery.
+
+Provide:
+
+- A dedicated battery area
+- Enough clearance around the battery
+- A secure method of holding the battery in place
+- Safe separation from other components where practical
+- Space for the battery wiring/connector
+
+The enclosure should also accommodate the selected charging method/charging connector.
+
+The charging port should be accessible without opening the entire watch.
+
+10. GPS and communication modules
+
+Provide internal space for the location and communication hardware.
+
+The design should avoid completely surrounding these modules with unnecessary material where that could interfere with their intended operation.
+
+Provide reasonable clearance and positioning for:
+
+- GPS/location module and antenna
+- GSM/communication module and antenna
+
+The exact internal arrangement should be adjusted according to the actual component dimensions.
+
+11. Strap attachment
+
+Add strong, clean watch-strap mounting points/lugs.
+
+The strap attachment should:
+
+- Be strong enough for normal wrist use
+- Look integrated into the case
+- Avoid sharp edges
+- Allow a practical watch strap to be attached
+
+12. Manufacturing requirements
+
+The enclosure should be designed for 3D printing.
+
+Avoid unnecessary:
+
+- Extremely thin walls
+- Unsupported overhangs
+- Tiny features that cannot print reliably
+- Fragile attachment points
+
+Use practical wall thicknesses and tolerances suitable for a student-level FDM 3D printer.
+
+The final design should be possible to print as separate parts and assemble afterward.
+
+13. Design priorities
+
+The priorities are:
+
+1. Functional
+2. Openable and serviceable
+3. Rechargeable
+4. Compact
+5. Comfortable to wear
+6. Easy to 3D-print
+7. Clean and professional appearance
+
+The final Smart Wearable should look like a real smartwatch, not an electronics project box.
+
+14. Final CAD output
+
+Create the design as separate, clearly identifiable components:
+
+- Main/bottom watch body
+- Removable top cover
+- OLED opening/window
+- Internal electronics cavity
+- Battery compartment/clearance
+- Component mounting supports
+- SOS button opening
+- Other control openings
+- LED openings/light guides
+- Buzzer/speaker openings
+- Rear skin-contact sensor opening/contact area
+- Charging-port opening
+- GPS/communication clearance
+- Strap attachment points
+
+The parts must fit together correctly and remain openable after assembly.
+
+The final goal is a compact, sleek, functional, rechargeable and serviceable Smart Wearable watch enclosure that can be 3D-printed and used as the physical housing for the actual electronics.
