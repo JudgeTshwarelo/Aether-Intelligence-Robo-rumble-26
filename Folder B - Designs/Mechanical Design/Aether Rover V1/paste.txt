@@ -1,0 +1,249 @@
+# AETHER INTELLIGENT EMERGENCY RESPONSE ROVER — 3D-PRINTABLE BODY SHELL
+
+## 1. Project objective
+
+Generate a detailed, dimensionally accurate, **3D-printable STL model of the external body shell only** for the AETHER Intelligent Emergency Response Rover. Use the provided reference images: the first image shows my actual four-wheel robotic car chassis, and the second image shows the futuristic AETHER rover design that I want to reproduce.
+
+The final design must combine the futuristic, angular, armored appearance of the AETHER medical rover with the compact dimensions and four-wheel layout of my actual chassis.
+
+This is a functional engineering component, not merely a visual concept, decorative model, or non-printable rendering.
+
+## 2. Overall exterior design
+
+Create a compact, futuristic, autonomous emergency-response rover with the following features:
+
+- A low-profile, angular, armored exterior inspired by the AETHER rover reference image.
+- A sleek, wedge-shaped front with sloped surfaces and a slightly raised central roof.
+- A geometric, faceted body with clean edges, realistic proportions, and smooth transitions between panels.
+- A professional industrial design suitable for both police operations and emergency medical response.
+- A predominantly white or light-grey exterior with dark recessed details represented by the geometry where appropriate.
+- A compact roof section for mounting sensors and communication equipment.
+- A visible front sensor housing integrated into the body.
+- Side panels that cover and protect the electronics.
+- A rear section with sufficient space for wiring, connectors, and access to the chassis electronics.
+- Exposed wheels and wheel openings that preserve the mobility of the original four-wheel chassis.
+
+The exterior should communicate the same design language as the reference image: advanced robotics, rugged construction, intelligent emergency response, and professional engineering.
+
+Do not reproduce the six-wheel arrangement in the reference image. My actual chassis has four wheels, and the body must be designed around that configuration.
+
+## 3. Chassis fitment — highest priority
+
+The body shell must fit over my existing four-wheel robotic car chassis without interfering with the motors, wheels, motor driver, or wiring.
+
+Treat the uploaded chassis photograph as a visual reference only. Do not assume its exact dimensions from the image.
+
+Use these parameters when designing the model:
+
+- Chassis length: [ENTER MEASURED LENGTH IN MM]
+- Chassis width: [ENTER MEASURED WIDTH IN MM]
+- Chassis height, including wheels: [ENTER MEASURED HEIGHT IN MM]
+- Wheel diameter: [ENTER MEASURED DIAMETER IN MM]
+- Wheel width: [ENTER MEASURED WIDTH IN MM]
+- Distance between left and right wheel centres: [ENTER MEASUREMENT IN MM]
+- Distance between front and rear wheel centres: [ENTER MEASUREMENT IN MM]
+- Maximum available body height above the chassis: [ENTER MEASUREMENT IN MM]
+
+Use these dimensions as mandatory design constraints.
+
+Create a hollow lower body that fits over the chassis and provides clearance for all four wheels. The wheels must remain visible and must be able to rotate freely and steer if the chassis supports steering.
+
+Include adequate clearance between the shell and every moving wheel. Do not let the body obstruct the wheel rotation, motor shafts, or mechanical fasteners.
+
+Provide internal mounting tabs, brackets, or reinforced mounting points that can attach the shell to the existing chassis using screws, bolts, or suitable existing mounting holes.
+
+If the chassis dimensions or mounting-hole positions are not provided, do not invent supposedly exact measurements. Create a configurable model with clearly identified dimensions that can be adjusted after measuring the real chassis.
+
+## 4. Front camera housing
+
+Integrate a dedicated front-facing camera enclosure into the sloped front section of the rover.
+
+The camera must be able to see the environment ahead without obstruction from the body shell.
+
+Required features:
+
+- A forward-facing aperture positioned near the front centre of the rover.
+- A recessed mounting cavity suitable for the actual camera module.
+- A flat or adjustable internal mounting surface for securing the camera.
+- A removable retaining bracket or screw-mounted camera holder.
+- A clear forward field of view, with no bodywork blocking the camera lens.
+- A cable passage from the camera enclosure into the hollow interior.
+- Sufficient space for the camera's circuit board, lens barrel, connectors, and wiring.
+
+Camera module dimensions: [ENTER WIDTH × HEIGHT × DEPTH IN MM].
+
+Camera lens diameter: [ENTER DIAMETER IN MM].
+
+Position the camera high enough to provide a useful forward view while keeping the rover compact and stable.
+
+Do not model a decorative camera lens as a substitute for a real mounting aperture. The STL must contain a functional opening for the physical camera.
+
+## 5. Ultrasonic sensor mounting
+
+Integrate a forward-facing ultrasonic sensor mount into the front bumper or front sensor panel.
+
+The mount must:
+
+- Accommodate my actual ultrasonic sensor module.
+- Provide two unobstructed circular openings aligned with the sensor's transmitter and receiver.
+- Keep both ultrasonic transducers exposed to the environment.
+- Secure the module using screw holes, a retaining bracket, or a close-fitting mounting pocket.
+- Allow the sensor to be removed and replaced without dismantling the entire body.
+- Prevent the surrounding shell from obstructing the ultrasonic beam.
+- Provide a cable passage into the interior electronics compartment.
+
+Ultrasonic module dimensions: [ENTER WIDTH × HEIGHT × DEPTH IN MM].
+
+Transducer centre-to-centre spacing: [ENTER MEASUREMENT IN MM].
+
+Transducer diameter: [ENTER DIAMETER IN MM].
+
+Do not cover the ultrasonic transducers with solid plastic. Do not place the camera housing or decorative panels in front of the sensor.
+
+## 6. Motion detector mounting
+
+Provide a dedicated mounting position for a motion detector sensor, preferably on the upper front section or front roof edge.
+
+The mount must include:
+
+- An unobstructed sensor-facing opening appropriate to the actual sensor.
+- A recessed mounting pocket or small removable bracket.
+- Screw holes or a retaining mechanism.
+- A cable-routing passage into the internal compartment.
+- Adequate separation from the camera and ultrasonic sensor.
+- A removable design for maintenance and replacement.
+
+Motion detector type: [ENTER SENSOR TYPE, SUCH AS PIR OR RADAR].
+
+Motion detector dimensions: [ENTER WIDTH × HEIGHT × DEPTH IN MM].
+
+Sensor viewing direction: [ENTER REQUIRED DIRECTION].
+
+If the sensor is a PIR module, ensure its sensing element can be fitted with its required optical lens and is not blocked by the printed body. If it is a radar module, use a suitable unobstructed sensing window.
+
+Do not assume that every motion detector uses the same opening or mounting geometry.
+
+## 7. Hollow internal electronics compartment
+
+Create a spacious hollow interior that conceals and protects the existing electronics while allowing access for repairs and upgrades.
+
+The internal compartment should accommodate the actual components installed on the chassis, including the microcontroller, motor driver, power distribution, wiring, connectors, and camera interface electronics where applicable.
+
+Required structural features:
+
+- A hollow underside that fits over the chassis.
+- An internal roof clearance suitable for the tallest component.
+- Reinforced internal mounting bosses.
+- Cable-routing channels and rounded cable pass-through holes.
+- Adequate spacing around connectors and removable circuit boards.
+- A rear or upper removable access panel secured with screws.
+- Rounded internal corners where possible to reduce stress concentrations.
+- Ventilation openings if required by the electronics and enclosure design.
+- Protection against accidental contact with moving wheels and exposed electrical connections.
+
+Do not create a solid block of plastic. The main body must be hollow and usable as an electronics enclosure.
+
+Do not permanently seal the underside. The shell must be removable so the chassis, batteries, motors, and electronics can be serviced.
+
+Do not assume the shell is waterproof simply because it looks armored. Any sealing features must be designed and tested separately.
+
+## 8. Futuristic exterior details
+
+Reproduce the visual character of the AETHER reference through geometry that can actually be manufactured.
+
+Include:
+
+- Angular front armor panels.
+- A sloping front nose.
+- Raised side body panels.
+- Geometric wheel arches.
+- A compact roof-mounted sensor platform.
+- A clean rear access panel.
+- Recessed panel lines where practical.
+- Small raised or recessed areas suitable for future AETHER branding.
+- Optional mounting points for LED lights, provided they do not weaken the body.
+
+Keep the external surfaces smooth enough for reliable FDM 3D printing.
+
+Do not use thin floating plates, unsupported decorative spikes, impossible overhangs, or intricate details that cannot be printed at the intended scale.
+
+Do not rely on colour, paint, transparency, textures, or lighting effects to communicate the design. The STL must contain the actual three-dimensional geometry.
+
+The primary deliverable is the functional body shell, not a complete rover assembly.
+
+## 9. Police and medical applications
+
+The same body shell must support two interchangeable exterior identities:
+
+A. Police and public-safety configuration:
+- Space for a removable blue identification panel.
+- Optional mounting points for warning LEDs.
+- Space for a police insignia or AETHER logo.
+- No permanent text that prevents reuse for medical response.
+
+B. Medical and emergency-response configuration:
+- Space for a removable red identification panel.
+- Optional mounting points for red warning LEDs.
+- Space for a medical cross or emergency-response insignia.
+- A clean exterior suitable for identifying the rover as an emergency-response robot.
+
+Both configurations must use the same underlying chassis-compatible body shell. Do not generate two incompatible chassis enclosures.
+
+## 10. Mechanical dimensions and 3D-printing constraints
+
+Design the body as a practical FDM-printed enclosure.
+
+Use the following starting parameters, subject to chassis measurements and printer capability:
+
+- Main wall thickness: approximately 2.0–2.5 mm.
+- Reinforced mounting areas: approximately 3.0–4.0 mm thick.
+- Screw bosses: sized for the selected screws and printer tolerances.
+- General clearance for fitted parts: approximately 0.3–0.5 mm per side, adjusted for the actual printer and fit.
+- Internal edges: rounded where practical.
+- External panel thickness: sufficient to prevent fragile, unsupported sections.
+- Split the body into printable sections if the complete shell exceeds the printer's build volume.
+
+Use dimensions in millimetres.
+
+Design the body so it can be printed in a sensible orientation with minimal supports. Where necessary, split the model into a main shell, removable upper cover, and separate sensor brackets.
+
+Make all mounting holes, sensor apertures, wheel cutouts, and access-panel interfaces real geometric features.
+
+Ensure the exported meshes are watertight, manifold, correctly oriented, and suitable for slicing.
+
+Avoid intersecting surfaces, non-manifold edges, internal faces that confuse the slicer, zero-thickness walls, and unsupported geometry.
+
+## 11. Required STL deliverables
+
+Generate the following printable components as separate, clearly named STL files where supported:
+
+1. AETHER_Main_Body_Shell.stl — the primary hollow exterior shell.
+2. AETHER_Removable_Top_Cover.stl — the removable upper access panel.
+3. AETHER_Front_Camera_Mount.stl — the functional camera holder.
+4. AETHER_Ultrasonic_Sensor_Mount.stl — the two-transducer ultrasonic sensor holder.
+5. AETHER_Motion_Detector_Mount.stl — the dedicated motion detector bracket.
+6. AETHER_Rear_Access_Panel.stl — the removable rear service cover.
+
+If the generator only supports one STL output, produce the main hollow body shell with the camera, ultrasonic sensor, motion detector, wheel openings, and mounting features incorporated into the geometry.
+
+Do not export decorative textures or a photograph. Export real, solid, printable 3D geometry.
+
+## 12. Final verification
+
+Before exporting, verify that:
+
+- The body fits the measured four-wheel chassis envelope.
+- All four wheels remain exposed and unobstructed.
+- The shell does not interfere with motors or wheel rotation.
+- The camera lens has an unobstructed forward view.
+- The ultrasonic sensor has two correctly positioned, unobstructed transducer openings.
+- The motion detector has an unobstructed sensing aperture.
+- The main electronics compartment is hollow.
+- Wires can pass through the body without being pinched.
+- The shell can be removed for maintenance.
+- The model contains no impossible or zero-thickness geometry.
+- The STL units and overall dimensions are correct.
+
+The final result should resemble the futuristic AETHER emergency-response rover in the reference image, but it must be a compact, practical, four-wheel, chassis-compatible body that can actually be 3D-printed, assembled, and tested.
+
+**Priority order: physical fit and sensor functionality first, structural strength and printability second, futuristic appearance third.**
