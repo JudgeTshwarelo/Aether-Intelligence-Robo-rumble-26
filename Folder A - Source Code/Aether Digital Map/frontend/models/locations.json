@@ -1,0 +1,9 @@
+{
+  "locations": [
+    {
+      "id": "mankweng",
+      "name": "Mankweng",
+      "meta": "/static/models/mankweng/meta.json"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "mankweng",
+  "name": "Mankweng",
+  "size_km": 4.97,
+  "source": "real-world",
+  "center": { "lat": -23.88972, "lon": 29.72615 },
+  "bounds": {
+    "north": -23.88468,
+    "south": -23.89476,
+    "east":  29.73163,
+    "west":  29.72067
+  },
+  "model": "/static/models/mankweng/mankweng.glb",
+  "layers": {
+    "roads":                 "ROAD*",
+    "terrain":               "TERRAIN*",
+    "water":                 "WATER*",
+    "site":                  "SITE*",
+    "paths":                 "PATH*",
+    "trees":                 "TREE*",
+
+    "buildings_residential": "BUILDINGS_RESIDENTIAL*",
+    "buildings_commercial":  "BUILDINGS_COMMERCIAL*",
+    "buildings_utility":     "BUILDINGS_UTILITY*",
+    "buildings_public":      "BUILDINGS_PUBLIC*",
+    "buildings_other":       "BUILDINGS_OTHER*"
+  }
+}
